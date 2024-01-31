@@ -31,7 +31,7 @@ import java.io.IOException;
  * ComponentClassDefinition is the Schema for the componentclassdefinitions API
  */
 @ApiModel(description = "ComponentClassDefinition is the Schema for the componentclassdefinitions API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-31T08:54:21.102Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-31T09:04:54.369Z[Etc/UTC]")
 public class V1alpha1ComponentClassDefinition implements io.kubernetes.client.common.KubernetesObject {
   public static final String SERIALIZED_NAME_API_VERSION = "apiVersion";
   @SerializedName(SERIALIZED_NAME_API_VERSION)

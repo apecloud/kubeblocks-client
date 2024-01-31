@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * V1alpha1ComponentClassDefinitionSpecSeries
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-31T08:54:21.102Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-31T09:04:54.369Z[Etc/UTC]")
 public class V1alpha1ComponentClassDefinitionSpecSeries {
   public static final String SERIALIZED_NAME_CLASSES = "classes";
   @SerializedName(SERIALIZED_NAME_CLASSES)

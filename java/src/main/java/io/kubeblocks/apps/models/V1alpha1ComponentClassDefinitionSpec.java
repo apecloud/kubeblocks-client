@@ -31,7 +31,7 @@ import java.util.List;
  * ComponentClassDefinitionSpec defines the desired state of ComponentClassDefinition
  */
 @ApiModel(description = "ComponentClassDefinitionSpec defines the desired state of ComponentClassDefinition")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-31T08:54:21.102Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-31T09:04:54.369Z[Etc/UTC]")
 public class V1alpha1ComponentClassDefinitionSpec {
   public static final String SERIALIZED_NAME_GROUPS = "groups";
   @SerializedName(SERIALIZED_NAME_GROUPS)

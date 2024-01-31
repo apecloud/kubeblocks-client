@@ -31,7 +31,7 @@ import java.util.List;
  * ComponentClassDefinitionStatus defines the observed state of ComponentClassDefinition
  */
 @ApiModel(description = "ComponentClassDefinitionStatus defines the observed state of ComponentClassDefinition")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-31T08:54:21.102Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-31T09:04:54.369Z[Etc/UTC]")
 public class V1alpha1ComponentClassDefinitionStatus {
   public static final String SERIALIZED_NAME_CLASSES = "classes";
   @SerializedName(SERIALIZED_NAME_CLASSES)
