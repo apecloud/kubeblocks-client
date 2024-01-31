@@ -47,5 +47,8 @@ crd_list=(
 for crd_arr in "${crd_list[@]}"; do
 	IFS=';' read -r -a crd <<< "${crd_arr}"
 	echo "get crd ${crd[2]}"
-	kubectl get crd ${crd[0]}.${crd[1]}.kubeblocks.io -o yaml > apis/${crd[1]}/${api_version}/${crd[2]}.yaml
+	target_file="apis/${crd[1]}/${api_version}/${crd[2]}.yaml"
+	kubectl get crd ${crd[0]}.${crd[1]}.kubeblocks.io -o yaml > ${target_file}
+	echo "remove x-kubernetes-validations fields"
+	yq 'del(.. | select(has("x-kubernetes-validations")).x-kubernetes-validations)' -i ${target_file}
 done
