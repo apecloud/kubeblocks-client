@@ -372,7 +372,7 @@ public class V1alpha1ClusterSpecBackup {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterSpecBackup
   */
   public static V1alpha1ClusterSpecBackup fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterSpecBackup.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterSpecBackup.class);
   }
 
  /**
@@ -381,7 +381,7 @@ public class V1alpha1ClusterSpecBackup {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

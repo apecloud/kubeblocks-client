@@ -280,7 +280,7 @@ public class V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInnerSpec
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInnerSpec
   */
   public static V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInnerSpec fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInnerSpec.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInnerSpec.class);
   }
 
  /**
@@ -289,7 +289,7 @@ public class V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInnerSpec
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

@@ -226,7 +226,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerStatelessSpecUpdateS
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerStatelessSpecUpdateStrategy
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerStatelessSpecUpdateStrategy fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerStatelessSpecUpdateStrategy.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerStatelessSpecUpdateStrategy.class);
   }
 
  /**
@@ -235,7 +235,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerStatelessSpecUpdateS
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

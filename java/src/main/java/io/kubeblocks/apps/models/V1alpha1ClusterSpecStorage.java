@@ -190,7 +190,7 @@ public class V1alpha1ClusterSpecStorage {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterSpecStorage
   */
   public static V1alpha1ClusterSpecStorage fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterSpecStorage.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterSpecStorage.class);
   }
 
  /**
@@ -199,7 +199,7 @@ public class V1alpha1ClusterSpecStorage {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

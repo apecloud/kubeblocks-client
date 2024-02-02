@@ -229,7 +229,7 @@ public class V1alpha1ClusterVersionSpecComponentVersionsInnerSystemAccountSpecCm
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterVersionSpecComponentVersionsInnerSystemAccountSpecCmdExecutorConfig
   */
   public static V1alpha1ClusterVersionSpecComponentVersionsInnerSystemAccountSpecCmdExecutorConfig fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterVersionSpecComponentVersionsInnerSystemAccountSpecCmdExecutorConfig.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterVersionSpecComponentVersionsInnerSystemAccountSpecCmdExecutorConfig.class);
   }
 
  /**
@@ -238,7 +238,7 @@ public class V1alpha1ClusterVersionSpecComponentVersionsInnerSystemAccountSpecCm
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

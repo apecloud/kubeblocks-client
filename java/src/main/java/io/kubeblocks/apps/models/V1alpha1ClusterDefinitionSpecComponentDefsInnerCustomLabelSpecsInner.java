@@ -286,7 +286,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerCustomLabelSpecsInne
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerCustomLabelSpecsInner
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerCustomLabelSpecsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerCustomLabelSpecsInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerCustomLabelSpecsInner.class);
   }
 
  /**
@@ -295,7 +295,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerCustomLabelSpecsInne
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

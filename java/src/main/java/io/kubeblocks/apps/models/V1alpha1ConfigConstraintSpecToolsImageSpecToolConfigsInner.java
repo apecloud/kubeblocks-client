@@ -276,7 +276,7 @@ public class V1alpha1ConfigConstraintSpecToolsImageSpecToolConfigsInner {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigConstraintSpecToolsImageSpecToolConfigsInner
   */
   public static V1alpha1ConfigConstraintSpecToolsImageSpecToolConfigsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpecToolsImageSpecToolConfigsInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpecToolsImageSpecToolConfigsInner.class);
   }
 
  /**
@@ -285,7 +285,7 @@ public class V1alpha1ConfigConstraintSpecToolsImageSpecToolConfigsInner {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

@@ -251,7 +251,7 @@ public class V1alpha1ClusterVersionSpec {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterVersionSpec
   */
   public static V1alpha1ClusterVersionSpec fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterVersionSpec.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterVersionSpec.class);
   }
 
  /**
@@ -260,7 +260,7 @@ public class V1alpha1ClusterVersionSpec {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

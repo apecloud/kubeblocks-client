@@ -263,7 +263,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsAccoun
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsAccountsInnerProvisionPolicyStatements
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsAccountsInnerProvisionPolicyStatements fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsAccountsInnerProvisionPolicyStatements.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsAccountsInnerProvisionPolicyStatements.class);
   }
 
  /**
@@ -272,7 +272,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsAccoun
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

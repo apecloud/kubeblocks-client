@@ -431,7 +431,7 @@ public class V1alpha1ClusterStatus {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterStatus
   */
   public static V1alpha1ClusterStatus fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterStatus.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterStatus.class);
   }
 
  /**
@@ -440,7 +440,7 @@ public class V1alpha1ClusterStatus {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

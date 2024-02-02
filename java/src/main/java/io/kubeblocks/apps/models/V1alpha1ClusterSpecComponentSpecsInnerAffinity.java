@@ -398,7 +398,7 @@ public class V1alpha1ClusterSpecComponentSpecsInnerAffinity {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterSpecComponentSpecsInnerAffinity
   */
   public static V1alpha1ClusterSpecComponentSpecsInnerAffinity fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterSpecComponentSpecsInnerAffinity.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterSpecComponentSpecsInnerAffinity.class);
   }
 
  /**
@@ -407,7 +407,7 @@ public class V1alpha1ClusterSpecComponentSpecsInnerAffinity {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

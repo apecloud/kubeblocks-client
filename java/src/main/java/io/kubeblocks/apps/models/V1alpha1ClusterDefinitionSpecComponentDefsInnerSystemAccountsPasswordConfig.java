@@ -283,7 +283,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsPasswo
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsPasswordConfig
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsPasswordConfig fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsPasswordConfig.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsPasswordConfig.class);
   }
 
  /**
@@ -292,7 +292,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerSystemAccountsPasswo
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

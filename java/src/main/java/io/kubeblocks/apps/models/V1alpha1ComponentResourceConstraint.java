@@ -286,7 +286,7 @@ public class V1alpha1ComponentResourceConstraint implements io.kubernetes.client
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentResourceConstraint
   */
   public static V1alpha1ComponentResourceConstraint fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentResourceConstraint.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentResourceConstraint.class);
   }
 
  /**
@@ -295,7 +295,7 @@ public class V1alpha1ComponentResourceConstraint implements io.kubernetes.client
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

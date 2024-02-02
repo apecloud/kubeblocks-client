@@ -226,7 +226,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerConsensusSpecLlUpdat
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerConsensusSpecLlUpdateStrategy
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerConsensusSpecLlUpdateStrategy fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerConsensusSpecLlUpdateStrategy.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerConsensusSpecLlUpdateStrategy.class);
   }
 
  /**
@@ -235,7 +235,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerConsensusSpecLlUpdat
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

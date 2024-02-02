@@ -319,7 +319,7 @@ public class V1alpha1Component implements io.kubernetes.client.common.Kubernetes
   * @throws IOException if the JSON string is invalid with respect to V1alpha1Component
   */
   public static V1alpha1Component fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1Component.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1Component.class);
   }
 
  /**
@@ -328,7 +328,7 @@ public class V1alpha1Component implements io.kubernetes.client.common.Kubernetes
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

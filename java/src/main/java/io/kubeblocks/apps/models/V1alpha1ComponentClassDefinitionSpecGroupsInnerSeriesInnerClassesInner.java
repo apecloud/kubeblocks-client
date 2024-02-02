@@ -291,7 +291,7 @@ public class V1alpha1ComponentClassDefinitionSpecGroupsInnerSeriesInnerClassesIn
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentClassDefinitionSpecGroupsInnerSeriesInnerClassesInner
   */
   public static V1alpha1ComponentClassDefinitionSpecGroupsInnerSeriesInnerClassesInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentClassDefinitionSpecGroupsInnerSeriesInnerClassesInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentClassDefinitionSpecGroupsInnerSeriesInnerClassesInner.class);
   }
 
  /**
@@ -300,7 +300,7 @@ public class V1alpha1ComponentClassDefinitionSpecGroupsInnerSeriesInnerClassesIn
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

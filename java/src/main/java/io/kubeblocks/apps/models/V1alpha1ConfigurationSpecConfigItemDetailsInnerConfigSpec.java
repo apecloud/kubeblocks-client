@@ -470,7 +470,7 @@ public class V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigSpec {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigSpec
   */
   public static V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigSpec fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigSpec.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigSpec.class);
   }
 
  /**
@@ -479,7 +479,7 @@ public class V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigSpec {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

@@ -299,7 +299,7 @@ public class V1alpha1ComponentDefinitionStatus {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentDefinitionStatus
   */
   public static V1alpha1ComponentDefinitionStatus fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentDefinitionStatus.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentDefinitionStatus.class);
   }
 
  /**
@@ -308,7 +308,7 @@ public class V1alpha1ComponentDefinitionStatus {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

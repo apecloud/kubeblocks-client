@@ -254,7 +254,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerSwitchoverSpecWithCa
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerSwitchoverSpecWithCandidate
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerSwitchoverSpecWithCandidate fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerSwitchoverSpecWithCandidate.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerSwitchoverSpecWithCandidate.class);
   }
 
  /**
@@ -263,7 +263,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerSwitchoverSpecWithCa
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

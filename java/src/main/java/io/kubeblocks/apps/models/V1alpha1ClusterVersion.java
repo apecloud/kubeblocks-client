@@ -319,7 +319,7 @@ public class V1alpha1ClusterVersion implements io.kubernetes.client.common.Kuber
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterVersion
   */
   public static V1alpha1ClusterVersion fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterVersion.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterVersion.class);
   }
 
  /**
@@ -328,7 +328,7 @@ public class V1alpha1ClusterVersion implements io.kubernetes.client.common.Kuber
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

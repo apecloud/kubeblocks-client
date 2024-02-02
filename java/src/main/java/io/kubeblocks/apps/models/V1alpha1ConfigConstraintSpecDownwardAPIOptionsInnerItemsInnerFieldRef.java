@@ -232,7 +232,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerItemsInnerFieldR
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerItemsInnerFieldRef
   */
   public static V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerItemsInnerFieldRef fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerItemsInnerFieldRef.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerItemsInnerFieldRef.class);
   }
 
  /**
@@ -241,7 +241,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerItemsInnerFieldR
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

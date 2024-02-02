@@ -314,7 +314,7 @@ public class V1alpha1ComponentSpecTolerationsInner {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentSpecTolerationsInner
   */
   public static V1alpha1ComponentSpecTolerationsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentSpecTolerationsInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentSpecTolerationsInner.class);
   }
 
  /**
@@ -323,7 +323,7 @@ public class V1alpha1ComponentSpecTolerationsInner {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

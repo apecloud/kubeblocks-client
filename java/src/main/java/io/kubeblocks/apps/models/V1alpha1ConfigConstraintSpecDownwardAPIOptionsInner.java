@@ -323,7 +323,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner
   */
   public static V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner.class);
   }
 
  /**
@@ -332,7 +332,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

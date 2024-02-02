@@ -314,7 +314,7 @@ public class V1alpha1ClusterStatusComponentsValueConsensusSetStatusFollowersInne
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterStatusComponentsValueConsensusSetStatusFollowersInner
   */
   public static V1alpha1ClusterStatusComponentsValueConsensusSetStatusFollowersInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterStatusComponentsValueConsensusSetStatusFollowersInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterStatusComponentsValueConsensusSetStatusFollowersInner.class);
   }
 
  /**
@@ -323,7 +323,7 @@ public class V1alpha1ClusterStatusComponentsValueConsensusSetStatusFollowersInne
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 
