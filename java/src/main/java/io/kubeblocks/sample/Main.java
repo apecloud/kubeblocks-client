@@ -3,10 +3,11 @@ package io.kubeblocks.sample;
 import io.kubeblocks.apps.models.V1alpha1Cluster;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpec;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInner;
+import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerInstancesInner;
+import io.kubeblocks.client.CustomObjectsApi;
 import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.openapi.ApiException;
 import io.kubernetes.client.openapi.Configuration;
-import io.kubernetes.client.openapi.apis.CustomObjectsApi;
 import io.kubernetes.client.openapi.models.V1ObjectMeta;
 import io.kubernetes.client.util.Config;
 import io.kubernetes.client.util.ModelMapper;
@@ -28,7 +29,7 @@ public class Main {
         }
         Configuration.setDefaultApiClient(client);
 
-        CustomObjectsApi customObjectsApi = new CustomObjectsApi(client);
+        CustomObjectsApi customObjectsApi = new CustomObjectsApi(client, 0);
 
         V1alpha1Cluster cluster = new V1alpha1Cluster();
         cluster.setApiVersion("apps.kubeblocks.io/v1alpha1");
@@ -49,6 +50,11 @@ public class Main {
         proxyComponentSpec.setComponentDefRef("redis-twemproxy");
         proxyComponentSpec.setName("redis-twemproxy");
         proxyComponentSpec.setReplicas(1);
+        List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInner> instances = new ArrayList<>();
+        V1alpha1ClusterSpecComponentSpecsInnerInstancesInner instance = new V1alpha1ClusterSpecComponentSpecsInnerInstancesInner();
+        instance.setName("proxy-0");
+        instances.add(instance);
+        proxyComponentSpec.setInstances(instances);
         V1alpha1ClusterSpecComponentSpecsInner sentinelComponentSpec = new V1alpha1ClusterSpecComponentSpecsInner();
         sentinelComponentSpec.setComponentDefRef("redis-sentinel");
         sentinelComponentSpec.setName("redis-sentinel");
@@ -63,10 +69,17 @@ public class Main {
         Object object = null;
         try {
             object = customObjectsApi.createNamespacedCustomObject("apps.kubeblocks.io", "v1alpha1", "default", "clusters", cluster, "true", null, null);
+            System.out.println(object);
         } catch (ApiException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        System.out.println(object);
+
+        try {
+            object = customObjectsApi.getNamespacedCustomObject("apps.kubeblocks.io", "v1alpha1", "default", "clusters", cluster.getMetadata().getName());
+            System.out.println(object);
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
