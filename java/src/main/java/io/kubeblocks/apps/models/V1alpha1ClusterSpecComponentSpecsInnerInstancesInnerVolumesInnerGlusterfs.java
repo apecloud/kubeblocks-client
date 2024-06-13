@@ -50,7 +50,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * glusterfs represents a Glusterfs mount on the host that shares a pod&#39;s lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-12T08:58:42.064637Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
 public class V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerGlusterfs {
   public static final String SERIALIZED_NAME_ENDPOINTS = "endpoints";
   @SerializedName(SERIALIZED_NAME_ENDPOINTS)

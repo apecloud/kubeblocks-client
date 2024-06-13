@@ -51,7 +51,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * Defines provider context for TLS certs. Required when TLS is enabled.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-12T08:58:42.064637Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
 public class V1alpha1ClusterSpecComponentSpecsInnerIssuer {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

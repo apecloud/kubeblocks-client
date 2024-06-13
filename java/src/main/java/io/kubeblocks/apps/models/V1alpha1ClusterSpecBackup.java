@@ -50,7 +50,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * Cluster backup configuration.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-12T08:58:42.064637Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
 public class V1alpha1ClusterSpecBackup {
   public static final String SERIALIZED_NAME_CRON_EXPRESSION = "cronExpression";
   @SerializedName(SERIALIZED_NAME_CRON_EXPRESSION)
