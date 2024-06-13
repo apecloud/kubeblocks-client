@@ -195,7 +195,7 @@ public class V1alpha1ComponentDefinitionSpecServicesInnerSpecSessionAffinityConf
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentDefinitionSpecServicesInnerSpecSessionAffinityConfig
   */
   public static V1alpha1ComponentDefinitionSpecServicesInnerSpecSessionAffinityConfig fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecServicesInnerSpecSessionAffinityConfig.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecServicesInnerSpecSessionAffinityConfig.class);
   }
 
  /**
@@ -204,7 +204,7 @@ public class V1alpha1ComponentDefinitionSpecServicesInnerSpecSessionAffinityConf
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

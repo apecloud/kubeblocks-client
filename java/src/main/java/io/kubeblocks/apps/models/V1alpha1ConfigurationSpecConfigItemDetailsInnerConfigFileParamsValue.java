@@ -231,7 +231,7 @@ public class V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigFileParamsValu
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigFileParamsValue
   */
   public static V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigFileParamsValue fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigFileParamsValue.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigFileParamsValue.class);
   }
 
  /**
@@ -240,7 +240,7 @@ public class V1alpha1ConfigurationSpecConfigItemDetailsInnerConfigFileParamsValu
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

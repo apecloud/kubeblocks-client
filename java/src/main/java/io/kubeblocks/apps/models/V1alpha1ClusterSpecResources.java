@@ -218,7 +218,7 @@ public class V1alpha1ClusterSpecResources {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterSpecResources
   */
   public static V1alpha1ClusterSpecResources fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterSpecResources.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterSpecResources.class);
   }
 
  /**
@@ -227,7 +227,7 @@ public class V1alpha1ClusterSpecResources {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

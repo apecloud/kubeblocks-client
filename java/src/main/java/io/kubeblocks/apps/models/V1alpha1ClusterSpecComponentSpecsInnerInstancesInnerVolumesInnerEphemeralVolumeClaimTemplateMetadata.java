@@ -340,7 +340,7 @@ public class V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerEph
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerEphemeralVolumeClaimTemplateMetadata
   */
   public static V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerEphemeralVolumeClaimTemplateMetadata fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerEphemeralVolumeClaimTemplateMetadata.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerEphemeralVolumeClaimTemplateMetadata.class);
   }
 
  /**
@@ -349,7 +349,7 @@ public class V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerEph
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

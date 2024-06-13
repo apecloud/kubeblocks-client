@@ -342,7 +342,7 @@ public class V1alpha1ConfigurationStatusConfigurationStatusInnerReconcileDetail 
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigurationStatusConfigurationStatusInnerReconcileDetail
   */
   public static V1alpha1ConfigurationStatusConfigurationStatusInnerReconcileDetail fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigurationStatusConfigurationStatusInnerReconcileDetail.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigurationStatusConfigurationStatusInnerReconcileDetail.class);
   }
 
  /**
@@ -351,7 +351,7 @@ public class V1alpha1ConfigurationStatusConfigurationStatusInnerReconcileDetail 
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

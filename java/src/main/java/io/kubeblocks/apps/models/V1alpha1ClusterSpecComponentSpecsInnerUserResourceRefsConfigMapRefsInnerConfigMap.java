@@ -302,7 +302,7 @@ public class V1alpha1ClusterSpecComponentSpecsInnerUserResourceRefsConfigMapRefs
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterSpecComponentSpecsInnerUserResourceRefsConfigMapRefsInnerConfigMap
   */
   public static V1alpha1ClusterSpecComponentSpecsInnerUserResourceRefsConfigMapRefsInnerConfigMap fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterSpecComponentSpecsInnerUserResourceRefsConfigMapRefsInnerConfigMap.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterSpecComponentSpecsInnerUserResourceRefsConfigMapRefsInnerConfigMap.class);
   }
 
  /**
@@ -311,7 +311,7 @@ public class V1alpha1ClusterSpecComponentSpecsInnerUserResourceRefsConfigMapRefs
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

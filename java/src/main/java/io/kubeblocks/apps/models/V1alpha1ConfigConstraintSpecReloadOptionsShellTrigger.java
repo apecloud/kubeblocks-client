@@ -242,7 +242,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger
   */
   public static V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.class);
   }
 
  /**
@@ -251,7 +251,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

@@ -201,7 +201,7 @@ public class V1alpha1ClusterVersionSpecComponentVersionsInnerSwitchoverSpec {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterVersionSpecComponentVersionsInnerSwitchoverSpec
   */
   public static V1alpha1ClusterVersionSpecComponentVersionsInnerSwitchoverSpec fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterVersionSpecComponentVersionsInnerSwitchoverSpec.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterVersionSpecComponentVersionsInnerSwitchoverSpec.class);
   }
 
  /**
@@ -210,7 +210,7 @@ public class V1alpha1ClusterVersionSpecComponentVersionsInnerSwitchoverSpec {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

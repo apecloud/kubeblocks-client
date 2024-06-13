@@ -319,7 +319,7 @@ public class V1alpha1Cluster implements io.kubernetes.client.common.KubernetesOb
   * @throws IOException if the JSON string is invalid with respect to V1alpha1Cluster
   */
   public static V1alpha1Cluster fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1Cluster.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1Cluster.class);
   }
 
  /**
@@ -328,7 +328,7 @@ public class V1alpha1Cluster implements io.kubernetes.client.common.KubernetesOb
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

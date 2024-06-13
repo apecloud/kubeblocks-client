@@ -285,7 +285,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbeCust
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbeCustomHandlerInner
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbeCustomHandlerInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbeCustomHandlerInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbeCustomHandlerInner.class);
   }
 
  /**
@@ -294,7 +294,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbeCust
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

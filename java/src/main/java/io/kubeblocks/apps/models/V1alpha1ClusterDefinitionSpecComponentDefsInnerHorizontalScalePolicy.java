@@ -304,7 +304,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerHorizontalScalePolic
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerHorizontalScalePolicy
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerHorizontalScalePolicy fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerHorizontalScalePolicy.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerHorizontalScalePolicy.class);
   }
 
  /**
@@ -313,7 +313,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerHorizontalScalePolic
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

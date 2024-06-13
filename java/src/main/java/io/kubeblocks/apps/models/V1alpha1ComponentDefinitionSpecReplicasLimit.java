@@ -227,7 +227,7 @@ public class V1alpha1ComponentDefinitionSpecReplicasLimit {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentDefinitionSpecReplicasLimit
   */
   public static V1alpha1ComponentDefinitionSpecReplicasLimit fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecReplicasLimit.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecReplicasLimit.class);
   }
 
  /**
@@ -236,7 +236,7 @@ public class V1alpha1ComponentDefinitionSpecReplicasLimit {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

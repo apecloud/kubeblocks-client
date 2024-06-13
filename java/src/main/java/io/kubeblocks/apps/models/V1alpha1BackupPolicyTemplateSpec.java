@@ -282,7 +282,7 @@ public class V1alpha1BackupPolicyTemplateSpec {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1BackupPolicyTemplateSpec
   */
   public static V1alpha1BackupPolicyTemplateSpec fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1BackupPolicyTemplateSpec.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1BackupPolicyTemplateSpec.class);
   }
 
  /**
@@ -291,7 +291,7 @@ public class V1alpha1BackupPolicyTemplateSpec {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

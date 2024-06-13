@@ -616,7 +616,7 @@ public class V1alpha1ConfigConstraintSpec {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigConstraintSpec
   */
   public static V1alpha1ConfigConstraintSpec fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpec.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigConstraintSpec.class);
   }
 
  /**
@@ -625,7 +625,7 @@ public class V1alpha1ConfigConstraintSpec {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

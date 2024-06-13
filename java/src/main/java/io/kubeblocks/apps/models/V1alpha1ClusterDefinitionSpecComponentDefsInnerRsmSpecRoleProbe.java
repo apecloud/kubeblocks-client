@@ -469,7 +469,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbe {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbe
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbe fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbe.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbe.class);
   }
 
  /**
@@ -478,7 +478,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecRoleProbe {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

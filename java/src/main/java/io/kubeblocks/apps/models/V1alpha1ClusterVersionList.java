@@ -310,7 +310,7 @@ public class V1alpha1ClusterVersionList implements io.kubernetes.client.common.K
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterVersionList
   */
   public static V1alpha1ClusterVersionList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterVersionList.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterVersionList.class);
   }
 
  /**
@@ -319,7 +319,7 @@ public class V1alpha1ClusterVersionList implements io.kubernetes.client.common.K
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

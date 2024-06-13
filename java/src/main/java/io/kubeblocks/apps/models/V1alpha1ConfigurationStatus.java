@@ -329,7 +329,7 @@ public class V1alpha1ConfigurationStatus {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ConfigurationStatus
   */
   public static V1alpha1ConfigurationStatus fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ConfigurationStatus.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ConfigurationStatus.class);
   }
 
  /**
@@ -338,7 +338,7 @@ public class V1alpha1ConfigurationStatus {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

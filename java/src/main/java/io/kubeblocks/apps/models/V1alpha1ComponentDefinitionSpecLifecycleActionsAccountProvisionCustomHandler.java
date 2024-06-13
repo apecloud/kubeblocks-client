@@ -548,7 +548,7 @@ public class V1alpha1ComponentDefinitionSpecLifecycleActionsAccountProvisionCust
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentDefinitionSpecLifecycleActionsAccountProvisionCustomHandler
   */
   public static V1alpha1ComponentDefinitionSpecLifecycleActionsAccountProvisionCustomHandler fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecLifecycleActionsAccountProvisionCustomHandler.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecLifecycleActionsAccountProvisionCustomHandler.class);
   }
 
  /**
@@ -557,7 +557,7 @@ public class V1alpha1ComponentDefinitionSpecLifecycleActionsAccountProvisionCust
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

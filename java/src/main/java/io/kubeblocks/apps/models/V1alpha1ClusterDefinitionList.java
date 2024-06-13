@@ -310,7 +310,7 @@ public class V1alpha1ClusterDefinitionList implements io.kubernetes.client.commo
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionList
   */
   public static V1alpha1ClusterDefinitionList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionList.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionList.class);
   }
 
  /**
@@ -319,7 +319,7 @@ public class V1alpha1ClusterDefinitionList implements io.kubernetes.client.commo
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

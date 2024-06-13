@@ -285,7 +285,7 @@ public class V1alpha1ComponentDefinitionSpecRolesInner {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentDefinitionSpecRolesInner
   */
   public static V1alpha1ComponentDefinitionSpecRolesInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecRolesInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecRolesInner.class);
   }
 
  /**
@@ -294,7 +294,7 @@ public class V1alpha1ComponentDefinitionSpecRolesInner {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

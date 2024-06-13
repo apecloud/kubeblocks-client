@@ -282,7 +282,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerProbesStatusProbe {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerProbesStatusProbe
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerProbesStatusProbe fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerProbesStatusProbe.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerProbesStatusProbe.class);
   }
 
  /**
@@ -291,7 +291,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerProbesStatusProbe {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

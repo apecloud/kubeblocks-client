@@ -327,7 +327,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecMembershipRec
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecMembershipReconfiguration
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecMembershipReconfiguration fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecMembershipReconfiguration.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecMembershipReconfiguration.class);
   }
 
  /**
@@ -336,7 +336,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerRsmSpecMembershipRec
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

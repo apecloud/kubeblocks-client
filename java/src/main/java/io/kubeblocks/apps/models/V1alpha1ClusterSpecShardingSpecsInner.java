@@ -263,7 +263,7 @@ public class V1alpha1ClusterSpecShardingSpecsInner {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterSpecShardingSpecsInner
   */
   public static V1alpha1ClusterSpecShardingSpecsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterSpecShardingSpecsInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterSpecShardingSpecsInner.class);
   }
 
  /**
@@ -272,7 +272,7 @@ public class V1alpha1ClusterSpecShardingSpecsInner {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

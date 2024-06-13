@@ -290,7 +290,7 @@ public class V1alpha1ClusterStatusComponentsValueMembersStatusInner {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterStatusComponentsValueMembersStatusInner
   */
   public static V1alpha1ClusterStatusComponentsValueMembersStatusInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterStatusComponentsValueMembersStatusInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterStatusComponentsValueMembersStatusInner.class);
   }
 
  /**
@@ -299,7 +299,7 @@ public class V1alpha1ClusterStatusComponentsValueMembersStatusInner {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

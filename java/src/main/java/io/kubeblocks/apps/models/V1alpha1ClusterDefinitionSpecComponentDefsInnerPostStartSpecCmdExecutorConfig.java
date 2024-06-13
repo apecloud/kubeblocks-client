@@ -314,7 +314,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerPostStartSpecCmdExec
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ClusterDefinitionSpecComponentDefsInnerPostStartSpecCmdExecutorConfig
   */
   public static V1alpha1ClusterDefinitionSpecComponentDefsInnerPostStartSpecCmdExecutorConfig fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerPostStartSpecCmdExecutorConfig.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ClusterDefinitionSpecComponentDefsInnerPostStartSpecCmdExecutorConfig.class);
   }
 
  /**
@@ -323,7 +323,7 @@ public class V1alpha1ClusterDefinitionSpecComponentDefsInnerPostStartSpecCmdExec
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

@@ -246,7 +246,7 @@ public class V1alpha1ComponentResourceConstraintSpecComponentSelectorInner {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentResourceConstraintSpecComponentSelectorInner
   */
   public static V1alpha1ComponentResourceConstraintSpecComponentSelectorInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentResourceConstraintSpecComponentSelectorInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentResourceConstraintSpecComponentSelectorInner.class);
   }
 
  /**
@@ -255,7 +255,7 @@ public class V1alpha1ComponentResourceConstraintSpecComponentSelectorInner {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

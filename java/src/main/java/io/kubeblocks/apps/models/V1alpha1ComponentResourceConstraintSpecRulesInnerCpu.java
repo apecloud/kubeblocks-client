@@ -288,7 +288,7 @@ public class V1alpha1ComponentResourceConstraintSpecRulesInnerCpu {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentResourceConstraintSpecRulesInnerCpu
   */
   public static V1alpha1ComponentResourceConstraintSpecRulesInnerCpu fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentResourceConstraintSpecRulesInnerCpu.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentResourceConstraintSpecRulesInnerCpu.class);
   }
 
  /**
@@ -297,7 +297,7 @@ public class V1alpha1ComponentResourceConstraintSpecRulesInnerCpu {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

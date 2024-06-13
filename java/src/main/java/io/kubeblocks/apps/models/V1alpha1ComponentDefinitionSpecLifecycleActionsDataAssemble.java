@@ -226,7 +226,7 @@ public class V1alpha1ComponentDefinitionSpecLifecycleActionsDataAssemble {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentDefinitionSpecLifecycleActionsDataAssemble
   */
   public static V1alpha1ComponentDefinitionSpecLifecycleActionsDataAssemble fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecLifecycleActionsDataAssemble.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecLifecycleActionsDataAssemble.class);
   }
 
  /**
@@ -235,7 +235,7 @@ public class V1alpha1ComponentDefinitionSpecLifecycleActionsDataAssemble {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 

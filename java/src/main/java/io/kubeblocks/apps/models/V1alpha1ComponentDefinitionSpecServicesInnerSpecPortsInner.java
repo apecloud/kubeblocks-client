@@ -347,7 +347,7 @@ public class V1alpha1ComponentDefinitionSpecServicesInnerSpecPortsInner {
   * @throws IOException if the JSON string is invalid with respect to V1alpha1ComponentDefinitionSpecServicesInnerSpecPortsInner
   */
   public static V1alpha1ComponentDefinitionSpecServicesInnerSpecPortsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecServicesInnerSpecPortsInner.class);
+    return new JSON().getGson().fromJson(jsonString, V1alpha1ComponentDefinitionSpecServicesInnerSpecPortsInner.class);
   }
 
  /**
@@ -356,7 +356,7 @@ public class V1alpha1ComponentDefinitionSpecServicesInnerSpecPortsInner {
   * @return JSON string
   */
   public String toJson() {
-    return JSON.getGson().toJson(this);
+    return new JSON().getGson().toJson(this);
   }
 }
 
