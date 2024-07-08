@@ -3,13 +3,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.1
-  creationTimestamp: "2024-05-14T07:40:38Z"
+  creationTimestamp: "2024-07-08T07:28:46Z"
   generation: 1
   labels:
     app.kubernetes.io/name: kubeblocks
   name: backuppolicytemplates.apps.kubeblocks.io
-  resourceVersion: "418"
-  uid: d10383b0-530f-4ed7-9a7d-4b77a6b1e281
+  resourceVersion: "116493"
+  uid: 0f45ed3b-aecf-43d8-8640-2c972fc4be99
 spec:
   conversion:
     strategy: None
@@ -659,12 +659,12 @@ status:
       - bpt
     singular: backuppolicytemplate
   conditions:
-    - lastTransitionTime: "2024-05-14T07:40:38Z"
+    - lastTransitionTime: "2024-07-08T07:28:46Z"
       message: no conflicts found
       reason: NoConflicts
       status: "True"
       type: NamesAccepted
-    - lastTransitionTime: "2024-05-14T07:40:38Z"
+    - lastTransitionTime: "2024-07-08T07:28:46Z"
       message: the initial names have been accepted
       reason: InitialNamesAccepted
       status: "True"

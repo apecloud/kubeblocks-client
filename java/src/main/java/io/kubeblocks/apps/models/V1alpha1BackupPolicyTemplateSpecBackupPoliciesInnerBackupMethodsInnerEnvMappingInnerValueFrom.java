@@ -51,9 +51,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * Defines the source from which the environment variable value is derived.
+ * Specifies the source used to derive the value of the environment variable, which typically represents the tool image required for backup operation.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvMappingInnerValueFrom {
   public static final String SERIALIZED_NAME_CLUSTER_VERSION_REF = "clusterVersionRef";
   @SerializedName(SERIALIZED_NAME_CLUSTER_VERSION_REF)
@@ -81,7 +81,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Maps to the environment value. This is an optional field.
+   * Determine the appropriate version of the backup tool image from ClusterVersion.   Deprecated since v0.9, since ClusterVersion is deprecated.
    * @return clusterVersionRef
   **/
   @jakarta.annotation.Nullable
@@ -110,7 +110,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Maps to the environment value. This is also an optional field.
+   * Determine the appropriate version of the backup tool image from ComponentDefinition.
    * @return componentDef
   **/
   @jakarta.annotation.Nullable

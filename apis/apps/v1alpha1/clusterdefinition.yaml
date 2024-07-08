@@ -3,13 +3,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.1
-  creationTimestamp: "2024-05-14T07:40:38Z"
-  generation: 3
+  creationTimestamp: "2024-07-08T07:28:47Z"
+  generation: 1
   labels:
     app.kubernetes.io/name: kubeblocks
   name: clusterdefinitions.apps.kubeblocks.io
-  resourceVersion: "551322"
-  uid: 67caa3aa-942a-4e83-9146-18ab7d50e86f
+  resourceVersion: "116506"
+  uid: 7794132e-28a8-41fb-98f7-919de0f12649
 spec:
   conversion:
     strategy: None
@@ -6069,12 +6069,12 @@ status:
       - cd
     singular: clusterdefinition
   conditions:
-    - lastTransitionTime: "2024-05-14T07:40:38Z"
+    - lastTransitionTime: "2024-07-08T07:28:47Z"
       message: no conflicts found
       reason: NoConflicts
       status: "True"
       type: NamesAccepted
-    - lastTransitionTime: "2024-05-14T07:40:38Z"
+    - lastTransitionTime: "2024-07-08T07:28:47Z"
       message: the initial names have been accepted
       reason: InitialNamesAccepted
       status: "True"

@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerDownwardAPIItemsInner;
+import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerScriptConfig;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,9 +52,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner
+ * DownwardAPIChangeTriggeredAction defines an action that triggers specific commands in response to changes in Pod labels. For example, a command might be executed when the &#39;role&#39; label of the Pod is updated.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
   public static final String SERIALIZED_NAME_COMMAND = "command";
   @SerializedName(SERIALIZED_NAME_COMMAND)
@@ -70,6 +71,10 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_SCRIPT_CONFIG = "scriptConfig";
+  @SerializedName(SERIALIZED_NAME_SCRIPT_CONFIG)
+  private V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerScriptConfig scriptConfig;
 
   public V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner() {
   }
@@ -89,7 +94,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
   }
 
    /**
-   * The command used to execute for the downward API. This field is optional.
+   * Specifies the command to be triggered when changes are detected in Downward API volume files. It relies on the inotify mechanism in the config-manager sidecar to monitor file changes.
    * @return command
   **/
   @jakarta.annotation.Nullable
@@ -118,7 +123,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
   }
 
    /**
-   * Represents a list of downward API volume files. This is a required field.
+   * Represents a list of files under the Downward API volume.
    * @return items
   **/
   @jakarta.annotation.Nonnull
@@ -139,7 +144,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
   }
 
    /**
-   * Specifies the mount point of the scripts file. This is a required field and must be a string of maximum length 128.
+   * Specifies the mount point of the Downward API volume.
    * @return mountPoint
   **/
   @jakarta.annotation.Nonnull
@@ -160,7 +165,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
   }
 
    /**
-   * Specifies the name of the field. This is a required field and must be a string of maximum length 63. The name should match the regex pattern &#x60;^[a-z0-9]([a-z0-9\\.\\-]*[a-z0-9])?$&#x60;.
+   * Specifies the name of the field. It must be a string of maximum length 63. The name should match the regex pattern &#x60;^[a-z0-9]([a-z0-9\\.\\-]*[a-z0-9])?$&#x60;.
    * @return name
   **/
   @jakarta.annotation.Nonnull
@@ -171,6 +176,27 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner scriptConfig(V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerScriptConfig scriptConfig) {
+    
+    this.scriptConfig = scriptConfig;
+    return this;
+  }
+
+   /**
+   * Get scriptConfig
+   * @return scriptConfig
+  **/
+  @jakarta.annotation.Nullable
+  public V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerScriptConfig getScriptConfig() {
+    return scriptConfig;
+  }
+
+
+  public void setScriptConfig(V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerScriptConfig scriptConfig) {
+    this.scriptConfig = scriptConfig;
   }
 
 
@@ -187,12 +213,13 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
     return Objects.equals(this.command, v1alpha1ConfigConstraintSpecDownwardAPIOptionsInner.command) &&
         Objects.equals(this.items, v1alpha1ConfigConstraintSpecDownwardAPIOptionsInner.items) &&
         Objects.equals(this.mountPoint, v1alpha1ConfigConstraintSpecDownwardAPIOptionsInner.mountPoint) &&
-        Objects.equals(this.name, v1alpha1ConfigConstraintSpecDownwardAPIOptionsInner.name);
+        Objects.equals(this.name, v1alpha1ConfigConstraintSpecDownwardAPIOptionsInner.name) &&
+        Objects.equals(this.scriptConfig, v1alpha1ConfigConstraintSpecDownwardAPIOptionsInner.scriptConfig);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(command, items, mountPoint, name);
+    return Objects.hash(command, items, mountPoint, name, scriptConfig);
   }
 
   @Override
@@ -203,6 +230,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    mountPoint: ").append(toIndentedString(mountPoint)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    scriptConfig: ").append(toIndentedString(scriptConfig)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -229,6 +257,7 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
     openapiFields.add("items");
     openapiFields.add("mountPoint");
     openapiFields.add("name");
+    openapiFields.add("scriptConfig");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -283,6 +312,10 @@ public class V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner {
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the optional field `scriptConfig`
+      if (jsonObj.get("scriptConfig") != null && !jsonObj.get("scriptConfig").isJsonNull()) {
+        V1alpha1ConfigConstraintSpecDownwardAPIOptionsInnerScriptConfig.validateJsonObject(jsonObj.getAsJsonObject("scriptConfig"));
       }
   }
 

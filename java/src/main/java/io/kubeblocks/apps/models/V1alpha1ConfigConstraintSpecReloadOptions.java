@@ -52,9 +52,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * Specifies whether the process supports reload. If set, the controller determines the behavior of the engine instance based on the configuration templates. It will either restart or reload depending on whether any parameters in the StaticParameters have been modified.
+ * Specifies the dynamic reload action supported by the engine. When set, the controller executes the method defined here to execute hot parameter updates.   Dynamic reloading is triggered only if both of the following conditions are met:   1. The modified parameters are listed in the &#x60;dynamicParameters&#x60; field. If &#x60;reloadStaticParamsBeforeRestart&#x60; is set to true, modifications to &#x60;staticParameters&#x60; can also trigger a reload. 2. &#x60;reloadOptions&#x60; is set.   If &#x60;reloadOptions&#x60; is not set or the modified parameters are not listed in &#x60;dynamicParameters&#x60;, dynamic reloading will not be triggered.   Example: &#x60;&#x60;&#x60;yaml reloadOptions: tplScriptTrigger: namespace: kb-system scriptConfigMapRef: mysql-reload-script sync: true &#x60;&#x60;&#x60;
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigConstraintSpecReloadOptions {
   public static final String SERIALIZED_NAME_AUTO_TRIGGER = "autoTrigger";
   @SerializedName(SERIALIZED_NAME_AUTO_TRIGGER)

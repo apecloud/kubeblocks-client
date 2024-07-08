@@ -51,7 +51,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvMappingInner
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvMappingInner {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -71,7 +71,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Specifies the environment variable key that requires mapping.
+   * Specifies the environment variable key in the mapping.
    * @return key
   **/
   @jakarta.annotation.Nonnull

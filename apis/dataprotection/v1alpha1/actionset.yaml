@@ -3,13 +3,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.1
-  creationTimestamp: "2024-05-14T07:40:42Z"
+  creationTimestamp: "2024-07-08T07:28:46Z"
   generation: 1
   labels:
     app.kubernetes.io/name: kubeblocks
   name: actionsets.dataprotection.kubeblocks.io
-  resourceVersion: "465"
-  uid: 87255b4f-9b3a-4782-ad10-c9ce4970d5eb
+  resourceVersion: "116480"
+  uid: 83f58779-4e34-4be9-a74a-941817450a9e
 spec:
   conversion:
     strategy: None
@@ -481,12 +481,12 @@ status:
       - as
     singular: actionset
   conditions:
-    - lastTransitionTime: "2024-05-14T07:40:42Z"
+    - lastTransitionTime: "2024-07-08T07:28:46Z"
       message: no conflicts found
       reason: NoConflicts
       status: "True"
       type: NamesAccepted
-    - lastTransitionTime: "2024-05-14T07:40:42Z"
+    - lastTransitionTime: "2024-07-08T07:28:46Z"
       message: the initial names have been accepted
       reason: InitialNamesAccepted
       status: "True"

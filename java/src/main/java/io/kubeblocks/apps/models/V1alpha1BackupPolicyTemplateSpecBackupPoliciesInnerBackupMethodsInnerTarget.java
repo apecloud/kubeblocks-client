@@ -54,7 +54,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * Specifies the target information to back up, it will override the target in backup policy.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget {
   public static final String SERIALIZED_NAME_ACCOUNT = "account";
   @SerializedName(SERIALIZED_NAME_ACCOUNT)
@@ -67,6 +67,10 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   public static final String SERIALIZED_NAME_CONNECTION_CREDENTIAL_KEY = "connectionCredentialKey";
   @SerializedName(SERIALIZED_NAME_CONNECTION_CREDENTIAL_KEY)
   private V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetConnectionCredentialKey connectionCredentialKey;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_POD_SELECTOR = "podSelector";
   @SerializedName(SERIALIZED_NAME_POD_SELECTOR)
@@ -145,7 +149,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Refers to spec.componentDef.systemAccounts.accounts[*].name in the ClusterDefinition. The secret created by this account will be used to connect to the database. If not set, the secret created by spec.ConnectionCredential of the ClusterDefinition will be used.   It will be transformed into a secret for the BackupPolicy&#39;s target secret.
+   * If &#x60;backupPolicy.componentDefs&#x60; is set, this field is required to specify the system account name. This account must match one listed in &#x60;componentDefinition.spec.systemAccounts[*].name&#x60;. The corresponding secret created by this account is used to connect to the database.   If &#x60;backupPolicy.componentDefRef&#x60; (a legacy and deprecated API) is set, the secret defined in &#x60;clusterDefinition.spec.ConnectionCredential&#x60; is used instead.
    * @return account
   **/
   @jakarta.annotation.Nullable
@@ -201,6 +205,27 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
 
+  public V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Specifies a mandatory and unique identifier for each target when using the \&quot;targets\&quot; field. The backup data for the current target is stored in a uniquely named subdirectory.
+   * @return name
+  **/
+  @jakarta.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
   public V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget podSelector(V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetPodSelector podSelector) {
     
     this.podSelector = podSelector;
@@ -250,7 +275,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Specifies the instance of the corresponding role for backup. The roles can be:   - Leader, Follower, or Leaner for the Consensus component. - Primary or Secondary for the Replication component.   Invalid roles of the component will be ignored. For example, if the workload type is Replication and the component&#39;s replicas is 1, the secondary role is invalid. It will also be ignored when the component is Stateful or Stateless.   The role will be transformed into a role LabelSelector for the BackupPolicy&#39;s target attribute.
+   * Specifies the role to select one or more replicas for backup.   - If no replica with the specified role exists, the backup task will fail. Special case: If there is only one replica in the cluster, it will be used for backup, even if its role differs from the specified one. For example, if you specify backing up on a secondary replica, but the cluster is single-node with only one primary replica, the primary will be used for backup. Future versions will address this special case using role priorities. - If multiple replicas satisfy the specified role, the choice (&#x60;Any&#x60; or &#x60;All&#x60;) will be made according to the &#x60;strategy&#x60; field below.
    * @return role
   **/
   @jakarta.annotation.Nonnull
@@ -319,6 +344,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
     return Objects.equals(this.account, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget.account) &&
         Objects.equals(this.connectionCredential, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget.connectionCredential) &&
         Objects.equals(this.connectionCredentialKey, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget.connectionCredentialKey) &&
+        Objects.equals(this.name, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget.name) &&
         Objects.equals(this.podSelector, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget.podSelector) &&
         Objects.equals(this.resources, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget.resources) &&
         Objects.equals(this.role, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget.role) &&
@@ -328,7 +354,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, connectionCredential, connectionCredentialKey, podSelector, resources, role, serviceAccountName, strategy);
+    return Objects.hash(account, connectionCredential, connectionCredentialKey, name, podSelector, resources, role, serviceAccountName, strategy);
   }
 
   @Override
@@ -338,6 +364,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
     sb.append("    account: ").append(toIndentedString(account)).append("\n");
     sb.append("    connectionCredential: ").append(toIndentedString(connectionCredential)).append("\n");
     sb.append("    connectionCredentialKey: ").append(toIndentedString(connectionCredentialKey)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    podSelector: ").append(toIndentedString(podSelector)).append("\n");
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
@@ -368,6 +395,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
     openapiFields.add("account");
     openapiFields.add("connectionCredential");
     openapiFields.add("connectionCredentialKey");
+    openapiFields.add("name");
     openapiFields.add("podSelector");
     openapiFields.add("resources");
     openapiFields.add("role");
@@ -416,6 +444,9 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
       // validate the optional field `connectionCredentialKey`
       if (jsonObj.get("connectionCredentialKey") != null && !jsonObj.get("connectionCredentialKey").isJsonNull()) {
         V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetConnectionCredentialKey.validateJsonObject(jsonObj.getAsJsonObject("connectionCredentialKey"));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `podSelector`
       if (jsonObj.get("podSelector") != null && !jsonObj.get("podSelector").isJsonNull()) {

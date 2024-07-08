@@ -53,9 +53,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * V1alpha1BackupPolicyTemplateSpecBackupPoliciesInner
+ * BackupPolicy is the template corresponding to a specified ComponentDefinition or to a group of ComponentDefinitions that are different versions of definitions of the same component.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInner {
   public static final String SERIALIZED_NAME_BACKOFF_LIMIT = "backoffLimit";
   @SerializedName(SERIALIZED_NAME_BACKOFF_LIMIT)
@@ -91,7 +91,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInner {
   }
 
    /**
-   * Specifies the number of retries before marking the backup as failed.
+   * Specifies the maximum number of retry attempts for a backup before it is considered a failure.
    * minimum: 0
    * maximum: 10
    * @return backoffLimit
@@ -122,7 +122,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInner {
   }
 
    /**
-   * Define the methods to be used for backups.
+   * Defines an array of BackupMethods to be used.
    * @return backupMethods
   **/
   @jakarta.annotation.Nonnull
@@ -143,7 +143,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInner {
   }
 
    /**
-   * References a componentDef defined in the ClusterDefinition spec. Must comply with the IANA Service Naming rule.
+   * Specifies the name of ClusterComponentDefinition defined in the ClusterDefinition. Must comply with the IANA Service Naming rule.   Deprecated since v0.9, should use &#x60;componentDefs&#x60; instead. This field is maintained for backward compatibility and its use is discouraged. Existing usage should be updated to the current preferred approach to avoid compatibility issues in future releases.
    * @return componentDefRef
   **/
   @jakarta.annotation.Nullable
@@ -172,7 +172,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInner {
   }
 
    /**
-   * References to componentDefinitions. Must comply with the IANA Service Naming rule.
+   * Specifies a list of names of ComponentDefinitions that the specified ClusterDefinition references. They should be different versions of definitions of the same component, thus allowing them to share a single BackupPolicy. Each name must adhere to the IANA Service Naming rule.
    * @return componentDefs
   **/
   @jakarta.annotation.Nullable
@@ -201,7 +201,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInner {
   }
 
    /**
-   * Define the policy for backup scheduling.
+   * Defines the execution plans for backup tasks, specifying when and how backups should occur, and the retention period of backup files.
    * @return schedules
   **/
   @jakarta.annotation.Nullable

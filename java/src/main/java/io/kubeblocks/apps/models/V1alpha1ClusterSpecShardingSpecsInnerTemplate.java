@@ -20,18 +20,23 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.kubeblocks.apps.models.V1alpha1ClusterSpecAffinity;
+import io.kubeblocks.apps.models.V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvInner;
+import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerAffinity;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerClassDefRef;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerInstancesInner;
+import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumeClaimTemplatesInner;
+import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInner;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerIssuer;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerServiceRefsInner;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerServicesInner;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerSwitchPolicy;
+import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerSystemAccountsInner;
 import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerUserResourceRefs;
-import io.kubeblocks.apps.models.V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInner;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,13 +64,17 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * The blueprint for the components. Generates a set of components (also referred to as shards) based on this template. All components or shards generated will have identical specifications and definitions.
+ * The template for generating Components for shards, where each shard consists of one Component. This field is of type ClusterComponentSpec, which encapsulates all the required details and definitions for creating and managing the Components. KubeBlocks uses this template to generate a set of identical Components or shards. All the generated Components will have the same specifications and definitions as specified in the &#x60;template&#x60; field.   This allows for the creation of multiple Components with consistent configurations, enabling sharding and distribution of workloads across Components.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   public static final String SERIALIZED_NAME_AFFINITY = "affinity";
   @SerializedName(SERIALIZED_NAME_AFFINITY)
-  private V1alpha1ClusterSpecAffinity affinity;
+  private V1alpha1ClusterSpecComponentSpecsInnerAffinity affinity;
+
+  public static final String SERIALIZED_NAME_ANNOTATIONS = "annotations";
+  @SerializedName(SERIALIZED_NAME_ANNOTATIONS)
+  private Map<String, String> annotations = new HashMap<>();
 
   public static final String SERIALIZED_NAME_CLASS_DEF_REF = "classDefRef";
   @SerializedName(SERIALIZED_NAME_CLASS_DEF_REF)
@@ -79,9 +88,17 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   @SerializedName(SERIALIZED_NAME_COMPONENT_DEF_REF)
   private String componentDefRef;
 
+  public static final String SERIALIZED_NAME_DISABLE_EXPORTER = "disableExporter";
+  @SerializedName(SERIALIZED_NAME_DISABLE_EXPORTER)
+  private Boolean disableExporter;
+
   public static final String SERIALIZED_NAME_ENABLED_LOGS = "enabledLogs";
   @SerializedName(SERIALIZED_NAME_ENABLED_LOGS)
   private List<String> enabledLogs;
+
+  public static final String SERIALIZED_NAME_ENV = "env";
+  @SerializedName(SERIALIZED_NAME_ENV)
+  private List<V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvInner> env;
 
   public static final String SERIALIZED_NAME_INSTANCES = "instances";
   @SerializedName(SERIALIZED_NAME_INSTANCES)
@@ -91,6 +108,10 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   @SerializedName(SERIALIZED_NAME_ISSUER)
   private V1alpha1ClusterSpecComponentSpecsInnerIssuer issuer;
 
+  public static final String SERIALIZED_NAME_LABELS = "labels";
+  @SerializedName(SERIALIZED_NAME_LABELS)
+  private Map<String, String> labels = new HashMap<>();
+
   public static final String SERIALIZED_NAME_MONITOR = "monitor";
   @SerializedName(SERIALIZED_NAME_MONITOR)
   private Boolean monitor;
@@ -98,6 +119,10 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_OFFLINE_INSTANCES = "offlineInstances";
+  @SerializedName(SERIALIZED_NAME_OFFLINE_INSTANCES)
+  private List<String> offlineInstances;
 
   public static final String SERIALIZED_NAME_REPLICAS = "replicas";
   @SerializedName(SERIALIZED_NAME_REPLICAS)
@@ -115,6 +140,10 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   @SerializedName(SERIALIZED_NAME_SERVICE_REFS)
   private List<V1alpha1ClusterSpecComponentSpecsInnerServiceRefsInner> serviceRefs;
 
+  public static final String SERIALIZED_NAME_SERVICE_VERSION = "serviceVersion";
+  @SerializedName(SERIALIZED_NAME_SERVICE_VERSION)
+  private String serviceVersion;
+
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   private List<V1alpha1ClusterSpecComponentSpecsInnerServicesInner> services;
@@ -122,6 +151,10 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   public static final String SERIALIZED_NAME_SWITCH_POLICY = "switchPolicy";
   @SerializedName(SERIALIZED_NAME_SWITCH_POLICY)
   private V1alpha1ClusterSpecComponentSpecsInnerSwitchPolicy switchPolicy;
+
+  public static final String SERIALIZED_NAME_SYSTEM_ACCOUNTS = "systemAccounts";
+  @SerializedName(SERIALIZED_NAME_SYSTEM_ACCOUNTS)
+  private List<V1alpha1ClusterSpecComponentSpecsInnerSystemAccountsInner> systemAccounts;
 
   public static final String SERIALIZED_NAME_TLS = "tls";
   @SerializedName(SERIALIZED_NAME_TLS)
@@ -132,7 +165,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   private Object tolerations;
 
   /**
-   * Defines the update strategy for the component. Not supported.
+   * Defines the update strategy for the Component.   Deprecated since v0.9. This field is maintained for backward compatibility and its use is discouraged. Existing usage should be updated to the current preferred approach to avoid compatibility issues in future releases.
    */
   @JsonAdapter(UpdateStrategyEnum.Adapter.class)
   public enum UpdateStrategyEnum {
@@ -190,12 +223,16 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
 
   public static final String SERIALIZED_NAME_VOLUME_CLAIM_TEMPLATES = "volumeClaimTemplates";
   @SerializedName(SERIALIZED_NAME_VOLUME_CLAIM_TEMPLATES)
-  private List<V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInner> volumeClaimTemplates;
+  private List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumeClaimTemplatesInner> volumeClaimTemplates;
+
+  public static final String SERIALIZED_NAME_VOLUMES = "volumes";
+  @SerializedName(SERIALIZED_NAME_VOLUMES)
+  private List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInner> volumes;
 
   public V1alpha1ClusterSpecShardingSpecsInnerTemplate() {
   }
 
-  public V1alpha1ClusterSpecShardingSpecsInnerTemplate affinity(V1alpha1ClusterSpecAffinity affinity) {
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate affinity(V1alpha1ClusterSpecComponentSpecsInnerAffinity affinity) {
     
     this.affinity = affinity;
     return this;
@@ -206,13 +243,42 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
    * @return affinity
   **/
   @jakarta.annotation.Nullable
-  public V1alpha1ClusterSpecAffinity getAffinity() {
+  public V1alpha1ClusterSpecComponentSpecsInnerAffinity getAffinity() {
     return affinity;
   }
 
 
-  public void setAffinity(V1alpha1ClusterSpecAffinity affinity) {
+  public void setAffinity(V1alpha1ClusterSpecComponentSpecsInnerAffinity affinity) {
     this.affinity = affinity;
+  }
+
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate annotations(Map<String, String> annotations) {
+    
+    this.annotations = annotations;
+    return this;
+  }
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate putAnnotationsItem(String key, String annotationsItem) {
+    if (this.annotations == null) {
+      this.annotations = new HashMap<>();
+    }
+    this.annotations.put(key, annotationsItem);
+    return this;
+  }
+
+   /**
+   * Specifies Annotations to override or add for underlying Pods.
+   * @return annotations
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, String> getAnnotations() {
+    return annotations;
+  }
+
+
+  public void setAnnotations(Map<String, String> annotations) {
+    this.annotations = annotations;
   }
 
 
@@ -244,7 +310,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * References the name of the ComponentDefinition. If both componentDefRef and componentDef are provided, the componentDef will take precedence over componentDefRef.   TODO +kubebuilder:validation:XValidation:rule&#x3D;\&quot;self &#x3D;&#x3D; oldSelf\&quot;,message&#x3D;\&quot;componentDef is immutable\&quot;
+   * References the name of a ComponentDefinition object. The ComponentDefinition specifies the behavior and characteristics of the Component. If both &#x60;componentDefRef&#x60; and &#x60;componentDef&#x60; are provided, the &#x60;componentDef&#x60; will take precedence over &#x60;componentDefRef&#x60;.
    * @return componentDef
   **/
   @jakarta.annotation.Nullable
@@ -265,7 +331,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * References the componentDef defined in the ClusterDefinition spec. Must comply with the IANA Service Naming rule.   TODO +kubebuilder:validation:XValidation:rule&#x3D;\&quot;self &#x3D;&#x3D; oldSelf\&quot;,message&#x3D;\&quot;componentDefRef is immutable\&quot;
+   * References a ClusterComponentDefinition defined in the &#x60;clusterDefinition.spec.componentDef&#x60; field. Must comply with the IANA service naming rule.   Deprecated since v0.9, because defining Components in &#x60;clusterDefinition.spec.componentDef&#x60; field has been deprecated. This field is replaced by the &#x60;componentDef&#x60; field, use &#x60;componentDef&#x60; instead. This field is maintained for backward compatibility and its use is discouraged. Existing usage should be updated to the current preferred approach to avoid compatibility issues in future releases.   TODO +kubebuilder:validation:XValidation:rule&#x3D;\&quot;self &#x3D;&#x3D; oldSelf\&quot;,message&#x3D;\&quot;componentDefRef is immutable\&quot;
    * @return componentDefRef
   **/
   @jakarta.annotation.Nullable
@@ -276,6 +342,27 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
 
   public void setComponentDefRef(String componentDefRef) {
     this.componentDefRef = componentDefRef;
+  }
+
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate disableExporter(Boolean disableExporter) {
+    
+    this.disableExporter = disableExporter;
+    return this;
+  }
+
+   /**
+   * Determines whether metrics exporter information is annotated on the Component&#39;s headless Service.   If set to true, the following annotations will not be patched into the Service:   - \&quot;monitor.kubeblocks.io/path\&quot; - \&quot;monitor.kubeblocks.io/port\&quot; - \&quot;monitor.kubeblocks.io/scheme\&quot;   These annotations allow the Prometheus installed by KubeBlocks to discover and scrape metrics from the exporter.
+   * @return disableExporter
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getDisableExporter() {
+    return disableExporter;
+  }
+
+
+  public void setDisableExporter(Boolean disableExporter) {
+    this.disableExporter = disableExporter;
   }
 
 
@@ -294,7 +381,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Indicates which log file takes effect in the database cluster.
+   * Specifies which types of logs should be collected for the Component. The log types are defined in the &#x60;componentDefinition.spec.logConfigs&#x60; field with the LogConfig entries.   The elements in the &#x60;enabledLogs&#x60; array correspond to the names of the LogConfig entries. For example, if the &#x60;componentDefinition.spec.logConfigs&#x60; defines LogConfig entries with names \&quot;slow_query_log\&quot; and \&quot;error_log\&quot;, you can enable the collection of these logs by including their names in the &#x60;enabledLogs&#x60; array: &#x60;&#x60;&#x60;yaml enabledLogs: - slow_query_log - error_log &#x60;&#x60;&#x60;
    * @return enabledLogs
   **/
   @jakarta.annotation.Nullable
@@ -305,6 +392,35 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
 
   public void setEnabledLogs(List<String> enabledLogs) {
     this.enabledLogs = enabledLogs;
+  }
+
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate env(List<V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvInner> env) {
+    
+    this.env = env;
+    return this;
+  }
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate addEnvItem(V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvInner envItem) {
+    if (this.env == null) {
+      this.env = new ArrayList<>();
+    }
+    this.env.add(envItem);
+    return this;
+  }
+
+   /**
+   * List of environment variables to add. These environment variables will be placed after the environment variables declared in the Pod.
+   * @return env
+  **/
+  @jakarta.annotation.Nullable
+  public List<V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvInner> getEnv() {
+    return env;
+  }
+
+
+  public void setEnv(List<V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvInner> env) {
+    this.env = env;
   }
 
 
@@ -323,7 +439,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Overrides values in default Template.
+   * Allows for the customization of configuration values for each instance within a Component. An instance represent a single replica (Pod and associated K8s resources like PVCs, Services, and ConfigMaps). While instances typically share a common configuration as defined in the ClusterComponentSpec, they can require unique settings in various scenarios:   For example: - A database Component might require different resource allocations for primary and secondary instances, with primaries needing more resources. - During a rolling upgrade, a Component may first update the image for one or a few instances, and then update the remaining instances after verifying that the updated instances are functioning correctly.   InstanceTemplate allows for specifying these unique configurations per instance. Each instance&#39;s name is constructed using the pattern: $(component.name)-$(template.name)-$(ordinal), starting with an ordinal of 0. It is crucial to maintain unique names for each InstanceTemplate to avoid conflicts.   The sum of replicas across all InstanceTemplates should not exceed the total number of replicas specified for the Component. Any remaining replicas will be generated using the default template and will follow the default naming rules.
    * @return instances
   **/
   @jakarta.annotation.Nullable
@@ -358,6 +474,35 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
 
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate labels(Map<String, String> labels) {
+    
+    this.labels = labels;
+    return this;
+  }
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate putLabelsItem(String key, String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new HashMap<>();
+    }
+    this.labels.put(key, labelsItem);
+    return this;
+  }
+
+   /**
+   * Specifies Labels to override or add for underlying Pods.
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, String> getLabels() {
+    return labels;
+  }
+
+
+  public void setLabels(Map<String, String> labels) {
+    this.labels = labels;
+  }
+
+
   public V1alpha1ClusterSpecShardingSpecsInnerTemplate monitor(Boolean monitor) {
     
     this.monitor = monitor;
@@ -365,7 +510,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * To enable monitoring.
+   * Deprecated since v0.9 Determines whether metrics exporter information is annotated on the Component&#39;s headless Service.   If set to true, the following annotations will be patched into the Service:   - \&quot;monitor.kubeblocks.io/path\&quot; - \&quot;monitor.kubeblocks.io/port\&quot; - \&quot;monitor.kubeblocks.io/scheme\&quot;   These annotations allow the Prometheus installed by KubeBlocks to discover and scrape metrics from the exporter.
    * @return monitor
   **/
   @jakarta.annotation.Nullable
@@ -386,7 +531,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Specifies the name of the cluster&#39;s component. This name is also part of the Service DNS name and must comply with the IANA Service Naming rule. When ClusterComponentSpec is referenced as a template, the name is optional. Otherwise, it is required.   TODO +kubebuilder:validation:XValidation:rule&#x3D;\&quot;self &#x3D;&#x3D; oldSelf\&quot;,message&#x3D;\&quot;name is immutable\&quot;
+   * Specifies the Component&#39;s name. It&#39;s part of the Service DNS name and must comply with the IANA service naming rule. The name is optional when ClusterComponentSpec is used as a template (e.g., in &#x60;shardingSpec&#x60;), but required otherwise.   TODO +kubebuilder:validation:XValidation:rule&#x3D;\&quot;self &#x3D;&#x3D; oldSelf\&quot;,message&#x3D;\&quot;name is immutable\&quot;
    * @return name
   **/
   @jakarta.annotation.Nullable
@@ -400,6 +545,35 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
 
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate offlineInstances(List<String> offlineInstances) {
+    
+    this.offlineInstances = offlineInstances;
+    return this;
+  }
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate addOfflineInstancesItem(String offlineInstancesItem) {
+    if (this.offlineInstances == null) {
+      this.offlineInstances = new ArrayList<>();
+    }
+    this.offlineInstances.add(offlineInstancesItem);
+    return this;
+  }
+
+   /**
+   * Specifies the names of instances to be transitioned to offline status.   Marking an instance as offline results in the following:   1. The associated Pod is stopped, and its PersistentVolumeClaim (PVC) is retained for potential future reuse or data recovery, but it is no longer actively used. 2. The ordinal number assigned to this instance is preserved, ensuring it remains unique and avoiding conflicts with new instances.   Setting instances to offline allows for a controlled scale-in process, preserving their data and maintaining ordinal consistency within the Cluster. Note that offline instances and their associated resources, such as PVCs, are not automatically deleted. The administrator must manually manage the cleanup and removal of these resources when they are no longer needed.
+   * @return offlineInstances
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getOfflineInstances() {
+    return offlineInstances;
+  }
+
+
+  public void setOfflineInstances(List<String> offlineInstances) {
+    this.offlineInstances = offlineInstances;
+  }
+
+
   public V1alpha1ClusterSpecShardingSpecsInnerTemplate replicas(Integer replicas) {
     
     this.replicas = replicas;
@@ -407,7 +581,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Specifies the number of component replicas.
+   * Specifies the desired number of replicas in the Component for enhancing availability and durability, or load balancing.
    * minimum: 0
    * @return replicas
   **/
@@ -429,7 +603,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Specifies the resources requests and limits of the workload.
+   * Specifies the resources required by the Component. It allows defining the CPU, memory requirements and limits for the Component&#39;s containers.
    * @return resources
   **/
   @jakarta.annotation.Nullable
@@ -450,7 +624,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Specifies the name of the ServiceAccount that the running component depends on.
+   * Specifies the name of the ServiceAccount required by the running Component. This ServiceAccount is used to grant necessary permissions for the Component&#39;s Pods to interact with other Kubernetes resources, such as modifying Pod labels or sending events.   Defaults: To perform certain operational tasks, agent sidecars running in Pods require specific RBAC permissions. The service account will be bound to a default role named \&quot;kubeblocks-cluster-pod-role\&quot; which is installed together with KubeBlocks. If not specified, KubeBlocks automatically assigns a default ServiceAccount named \&quot;kb-{cluster.name}\&quot;   Future Changes: Future versions might change the default ServiceAccount creation strategy to one per Component, potentially revising the naming to \&quot;kb-{cluster.name}-{component.name}\&quot;.   Users can override the automatic ServiceAccount assignment by explicitly setting the name of an existed ServiceAccount in this field.
    * @return serviceAccountName
   **/
   @jakarta.annotation.Nullable
@@ -479,7 +653,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Defines service references for the current component.   Based on the referenced services, they can be categorized into two types:   - Service provided by external sources: These services are provided by external sources and are not managed by KubeBlocks. They can be Kubernetes-based or non-Kubernetes services. For external services, an additional ServiceDescriptor object is needed to establish the service binding. - Service provided by other KubeBlocks clusters: These services are provided by other KubeBlocks clusters. Binding to these services is done by specifying the name of the hosting cluster.   Each type of service reference requires specific configurations and bindings to establish the connection and interaction with the respective services. Note that the ServiceRef has cluster-level semantic consistency, meaning that within the same Cluster, service references with the same ServiceRef.Name are considered to be the same service. It is only allowed to bind to the same Cluster or ServiceDescriptor.
+   * Defines a list of ServiceRef for a Component, enabling access to both external services and Services provided by other Clusters.   Types of services:   - External services: Not managed by KubeBlocks or managed by a different KubeBlocks operator; Require a ServiceDescriptor for connection details. - Services provided by a Cluster: Managed by the same KubeBlocks operator; identified using Cluster, Component and Service names.   ServiceRefs with identical &#x60;serviceRef.name&#x60; in the same Cluster are considered the same.   Example: &#x60;&#x60;&#x60;yaml serviceRefs: - name: \&quot;redis-sentinel\&quot; serviceDescriptor: name: \&quot;external-redis-sentinel\&quot; - name: \&quot;postgres-cluster\&quot; clusterServiceSelector: cluster: \&quot;my-postgres-cluster\&quot; service: component: \&quot;postgresql\&quot; &#x60;&#x60;&#x60; The example above includes ServiceRefs to an external Redis Sentinel service and a PostgreSQL Cluster.
    * @return serviceRefs
   **/
   @jakarta.annotation.Nullable
@@ -490,6 +664,27 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
 
   public void setServiceRefs(List<V1alpha1ClusterSpecComponentSpecsInnerServiceRefsInner> serviceRefs) {
     this.serviceRefs = serviceRefs;
+  }
+
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate serviceVersion(String serviceVersion) {
+    
+    this.serviceVersion = serviceVersion;
+    return this;
+  }
+
+   /**
+   * ServiceVersion specifies the version of the Service expected to be provisioned by this Component. The version should follow the syntax and semantics of the \&quot;Semantic Versioning\&quot; specification (http://semver.org/). If no version is specified, the latest available version will be used.
+   * @return serviceVersion
+  **/
+  @jakarta.annotation.Nullable
+  public String getServiceVersion() {
+    return serviceVersion;
+  }
+
+
+  public void setServiceVersion(String serviceVersion) {
+    this.serviceVersion = serviceVersion;
   }
 
 
@@ -508,7 +703,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Services expose endpoints that can be accessed by clients.
+   * Overrides services defined in referenced ComponentDefinition and expose endpoints that can be accessed by clients.
    * @return services
   **/
   @jakarta.annotation.Nullable
@@ -543,6 +738,35 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
 
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate systemAccounts(List<V1alpha1ClusterSpecComponentSpecsInnerSystemAccountsInner> systemAccounts) {
+    
+    this.systemAccounts = systemAccounts;
+    return this;
+  }
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate addSystemAccountsItem(V1alpha1ClusterSpecComponentSpecsInnerSystemAccountsInner systemAccountsItem) {
+    if (this.systemAccounts == null) {
+      this.systemAccounts = new ArrayList<>();
+    }
+    this.systemAccounts.add(systemAccountsItem);
+    return this;
+  }
+
+   /**
+   * Overrides system accounts defined in referenced ComponentDefinition.
+   * @return systemAccounts
+  **/
+  @jakarta.annotation.Nullable
+  public List<V1alpha1ClusterSpecComponentSpecsInnerSystemAccountsInner> getSystemAccounts() {
+    return systemAccounts;
+  }
+
+
+  public void setSystemAccounts(List<V1alpha1ClusterSpecComponentSpecsInnerSystemAccountsInner> systemAccounts) {
+    this.systemAccounts = systemAccounts;
+  }
+
+
   public V1alpha1ClusterSpecShardingSpecsInnerTemplate tls(Boolean tls) {
     
     this.tls = tls;
@@ -550,7 +774,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Enables or disables TLS certs.
+   * A boolean flag that indicates whether the Component should use Transport Layer Security (TLS) for secure communication. When set to true, the Component will be configured to use TLS encryption for its network connections. This ensures that the data transmitted between the Component and its clients or other Components is encrypted and protected from unauthorized access. If TLS is enabled, the Component may require additional configuration, such as specifying TLS certificates and keys, to properly set up the secure communication channel.
    * @return tls
   **/
   @jakarta.annotation.Nullable
@@ -571,7 +795,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Attached to tolerate any taint that matches the triple &#x60;key,value,effect&#x60; using the matching operator &#x60;operator&#x60;.
+   * Allows Pods to be scheduled onto nodes with matching taints. Each toleration in the array allows the Pod to tolerate node taints based on specified &#x60;key&#x60;, &#x60;value&#x60;, &#x60;effect&#x60;, and &#x60;operator&#x60;.   - The &#x60;key&#x60;, &#x60;value&#x60;, and &#x60;effect&#x60; identify the taint that the toleration matches. - The &#x60;operator&#x60; determines how the toleration matches the taint.   Pods with matching tolerations are allowed to be scheduled on tainted nodes, typically reserved for specific purposes.
    * @return tolerations
   **/
   @jakarta.annotation.Nullable
@@ -592,7 +816,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Defines the update strategy for the component. Not supported.
+   * Defines the update strategy for the Component.   Deprecated since v0.9. This field is maintained for backward compatibility and its use is discouraged. Existing usage should be updated to the current preferred approach to avoid compatibility issues in future releases.
    * @return updateStrategy
   **/
   @jakarta.annotation.Nullable
@@ -627,13 +851,13 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
 
-  public V1alpha1ClusterSpecShardingSpecsInnerTemplate volumeClaimTemplates(List<V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInner> volumeClaimTemplates) {
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate volumeClaimTemplates(List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumeClaimTemplatesInner> volumeClaimTemplates) {
     
     this.volumeClaimTemplates = volumeClaimTemplates;
     return this;
   }
 
-  public V1alpha1ClusterSpecShardingSpecsInnerTemplate addVolumeClaimTemplatesItem(V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInner volumeClaimTemplatesItem) {
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate addVolumeClaimTemplatesItem(V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumeClaimTemplatesInner volumeClaimTemplatesItem) {
     if (this.volumeClaimTemplates == null) {
       this.volumeClaimTemplates = new ArrayList<>();
     }
@@ -642,17 +866,46 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
   }
 
    /**
-   * Provides information for statefulset.spec.volumeClaimTemplates.
+   * Specifies a list of PersistentVolumeClaim templates that represent the storage requirements for the Component. Each template specifies the desired characteristics of a persistent volume, such as storage class, size, and access modes. These templates are used to dynamically provision persistent volumes for the Component.
    * @return volumeClaimTemplates
   **/
   @jakarta.annotation.Nullable
-  public List<V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInner> getVolumeClaimTemplates() {
+  public List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumeClaimTemplatesInner> getVolumeClaimTemplates() {
     return volumeClaimTemplates;
   }
 
 
-  public void setVolumeClaimTemplates(List<V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInner> volumeClaimTemplates) {
+  public void setVolumeClaimTemplates(List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumeClaimTemplatesInner> volumeClaimTemplates) {
     this.volumeClaimTemplates = volumeClaimTemplates;
+  }
+
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate volumes(List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInner> volumes) {
+    
+    this.volumes = volumes;
+    return this;
+  }
+
+  public V1alpha1ClusterSpecShardingSpecsInnerTemplate addVolumesItem(V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInner volumesItem) {
+    if (this.volumes == null) {
+      this.volumes = new ArrayList<>();
+    }
+    this.volumes.add(volumesItem);
+    return this;
+  }
+
+   /**
+   * List of volumes to override.
+   * @return volumes
+  **/
+  @jakarta.annotation.Nullable
+  public List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInner> getVolumes() {
+    return volumes;
+  }
+
+
+  public void setVolumes(List<V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInner> volumes) {
+    this.volumes = volumes;
   }
 
 
@@ -667,30 +920,38 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
     }
     V1alpha1ClusterSpecShardingSpecsInnerTemplate v1alpha1ClusterSpecShardingSpecsInnerTemplate = (V1alpha1ClusterSpecShardingSpecsInnerTemplate) o;
     return Objects.equals(this.affinity, v1alpha1ClusterSpecShardingSpecsInnerTemplate.affinity) &&
+        Objects.equals(this.annotations, v1alpha1ClusterSpecShardingSpecsInnerTemplate.annotations) &&
         Objects.equals(this.classDefRef, v1alpha1ClusterSpecShardingSpecsInnerTemplate.classDefRef) &&
         Objects.equals(this.componentDef, v1alpha1ClusterSpecShardingSpecsInnerTemplate.componentDef) &&
         Objects.equals(this.componentDefRef, v1alpha1ClusterSpecShardingSpecsInnerTemplate.componentDefRef) &&
+        Objects.equals(this.disableExporter, v1alpha1ClusterSpecShardingSpecsInnerTemplate.disableExporter) &&
         Objects.equals(this.enabledLogs, v1alpha1ClusterSpecShardingSpecsInnerTemplate.enabledLogs) &&
+        Objects.equals(this.env, v1alpha1ClusterSpecShardingSpecsInnerTemplate.env) &&
         Objects.equals(this.instances, v1alpha1ClusterSpecShardingSpecsInnerTemplate.instances) &&
         Objects.equals(this.issuer, v1alpha1ClusterSpecShardingSpecsInnerTemplate.issuer) &&
+        Objects.equals(this.labels, v1alpha1ClusterSpecShardingSpecsInnerTemplate.labels) &&
         Objects.equals(this.monitor, v1alpha1ClusterSpecShardingSpecsInnerTemplate.monitor) &&
         Objects.equals(this.name, v1alpha1ClusterSpecShardingSpecsInnerTemplate.name) &&
+        Objects.equals(this.offlineInstances, v1alpha1ClusterSpecShardingSpecsInnerTemplate.offlineInstances) &&
         Objects.equals(this.replicas, v1alpha1ClusterSpecShardingSpecsInnerTemplate.replicas) &&
         Objects.equals(this.resources, v1alpha1ClusterSpecShardingSpecsInnerTemplate.resources) &&
         Objects.equals(this.serviceAccountName, v1alpha1ClusterSpecShardingSpecsInnerTemplate.serviceAccountName) &&
         Objects.equals(this.serviceRefs, v1alpha1ClusterSpecShardingSpecsInnerTemplate.serviceRefs) &&
+        Objects.equals(this.serviceVersion, v1alpha1ClusterSpecShardingSpecsInnerTemplate.serviceVersion) &&
         Objects.equals(this.services, v1alpha1ClusterSpecShardingSpecsInnerTemplate.services) &&
         Objects.equals(this.switchPolicy, v1alpha1ClusterSpecShardingSpecsInnerTemplate.switchPolicy) &&
+        Objects.equals(this.systemAccounts, v1alpha1ClusterSpecShardingSpecsInnerTemplate.systemAccounts) &&
         Objects.equals(this.tls, v1alpha1ClusterSpecShardingSpecsInnerTemplate.tls) &&
         Objects.equals(this.tolerations, v1alpha1ClusterSpecShardingSpecsInnerTemplate.tolerations) &&
         Objects.equals(this.updateStrategy, v1alpha1ClusterSpecShardingSpecsInnerTemplate.updateStrategy) &&
         Objects.equals(this.userResourceRefs, v1alpha1ClusterSpecShardingSpecsInnerTemplate.userResourceRefs) &&
-        Objects.equals(this.volumeClaimTemplates, v1alpha1ClusterSpecShardingSpecsInnerTemplate.volumeClaimTemplates);
+        Objects.equals(this.volumeClaimTemplates, v1alpha1ClusterSpecShardingSpecsInnerTemplate.volumeClaimTemplates) &&
+        Objects.equals(this.volumes, v1alpha1ClusterSpecShardingSpecsInnerTemplate.volumes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(affinity, classDefRef, componentDef, componentDefRef, enabledLogs, instances, issuer, monitor, name, replicas, resources, serviceAccountName, serviceRefs, services, switchPolicy, tls, tolerations, updateStrategy, userResourceRefs, volumeClaimTemplates);
+    return Objects.hash(affinity, annotations, classDefRef, componentDef, componentDefRef, disableExporter, enabledLogs, env, instances, issuer, labels, monitor, name, offlineInstances, replicas, resources, serviceAccountName, serviceRefs, serviceVersion, services, switchPolicy, systemAccounts, tls, tolerations, updateStrategy, userResourceRefs, volumeClaimTemplates, volumes);
   }
 
   @Override
@@ -698,25 +959,33 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1alpha1ClusterSpecShardingSpecsInnerTemplate {\n");
     sb.append("    affinity: ").append(toIndentedString(affinity)).append("\n");
+    sb.append("    annotations: ").append(toIndentedString(annotations)).append("\n");
     sb.append("    classDefRef: ").append(toIndentedString(classDefRef)).append("\n");
     sb.append("    componentDef: ").append(toIndentedString(componentDef)).append("\n");
     sb.append("    componentDefRef: ").append(toIndentedString(componentDefRef)).append("\n");
+    sb.append("    disableExporter: ").append(toIndentedString(disableExporter)).append("\n");
     sb.append("    enabledLogs: ").append(toIndentedString(enabledLogs)).append("\n");
+    sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    instances: ").append(toIndentedString(instances)).append("\n");
     sb.append("    issuer: ").append(toIndentedString(issuer)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    monitor: ").append(toIndentedString(monitor)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    offlineInstances: ").append(toIndentedString(offlineInstances)).append("\n");
     sb.append("    replicas: ").append(toIndentedString(replicas)).append("\n");
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    serviceAccountName: ").append(toIndentedString(serviceAccountName)).append("\n");
     sb.append("    serviceRefs: ").append(toIndentedString(serviceRefs)).append("\n");
+    sb.append("    serviceVersion: ").append(toIndentedString(serviceVersion)).append("\n");
     sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    switchPolicy: ").append(toIndentedString(switchPolicy)).append("\n");
+    sb.append("    systemAccounts: ").append(toIndentedString(systemAccounts)).append("\n");
     sb.append("    tls: ").append(toIndentedString(tls)).append("\n");
     sb.append("    tolerations: ").append(toIndentedString(tolerations)).append("\n");
     sb.append("    updateStrategy: ").append(toIndentedString(updateStrategy)).append("\n");
     sb.append("    userResourceRefs: ").append(toIndentedString(userResourceRefs)).append("\n");
     sb.append("    volumeClaimTemplates: ").append(toIndentedString(volumeClaimTemplates)).append("\n");
+    sb.append("    volumes: ").append(toIndentedString(volumes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -740,25 +1009,33 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("affinity");
+    openapiFields.add("annotations");
     openapiFields.add("classDefRef");
     openapiFields.add("componentDef");
     openapiFields.add("componentDefRef");
+    openapiFields.add("disableExporter");
     openapiFields.add("enabledLogs");
+    openapiFields.add("env");
     openapiFields.add("instances");
     openapiFields.add("issuer");
+    openapiFields.add("labels");
     openapiFields.add("monitor");
     openapiFields.add("name");
+    openapiFields.add("offlineInstances");
     openapiFields.add("replicas");
     openapiFields.add("resources");
     openapiFields.add("serviceAccountName");
     openapiFields.add("serviceRefs");
+    openapiFields.add("serviceVersion");
     openapiFields.add("services");
     openapiFields.add("switchPolicy");
+    openapiFields.add("systemAccounts");
     openapiFields.add("tls");
     openapiFields.add("tolerations");
     openapiFields.add("updateStrategy");
     openapiFields.add("userResourceRefs");
     openapiFields.add("volumeClaimTemplates");
+    openapiFields.add("volumes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -794,7 +1071,7 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
       }
       // validate the optional field `affinity`
       if (jsonObj.get("affinity") != null && !jsonObj.get("affinity").isJsonNull()) {
-        V1alpha1ClusterSpecAffinity.validateJsonObject(jsonObj.getAsJsonObject("affinity"));
+        V1alpha1ClusterSpecComponentSpecsInnerAffinity.validateJsonObject(jsonObj.getAsJsonObject("affinity"));
       }
       // validate the optional field `classDefRef`
       if (jsonObj.get("classDefRef") != null && !jsonObj.get("classDefRef").isJsonNull()) {
@@ -809,6 +1086,20 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
       // ensure the optional json data is an array if present
       if (jsonObj.get("enabledLogs") != null && !jsonObj.get("enabledLogs").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `enabledLogs` to be an array in the JSON string but got `%s`", jsonObj.get("enabledLogs").toString()));
+      }
+      if (jsonObj.get("env") != null && !jsonObj.get("env").isJsonNull()) {
+        JsonArray jsonArrayenv = jsonObj.getAsJsonArray("env");
+        if (jsonArrayenv != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("env").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `env` to be an array in the JSON string but got `%s`", jsonObj.get("env").toString()));
+          }
+
+          // validate the optional field `env` (array)
+          for (int i = 0; i < jsonArrayenv.size(); i++) {
+            V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
+          };
+        }
       }
       if (jsonObj.get("instances") != null && !jsonObj.get("instances").isJsonNull()) {
         JsonArray jsonArrayinstances = jsonObj.getAsJsonArray("instances");
@@ -831,6 +1122,10 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("offlineInstances") != null && !jsonObj.get("offlineInstances").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `offlineInstances` to be an array in the JSON string but got `%s`", jsonObj.get("offlineInstances").toString()));
+      }
       if ((jsonObj.get("serviceAccountName") != null && !jsonObj.get("serviceAccountName").isJsonNull()) && !jsonObj.get("serviceAccountName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `serviceAccountName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("serviceAccountName").toString()));
       }
@@ -847,6 +1142,9 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
             V1alpha1ClusterSpecComponentSpecsInnerServiceRefsInner.validateJsonObject(jsonArrayserviceRefs.get(i).getAsJsonObject());
           };
         }
+      }
+      if ((jsonObj.get("serviceVersion") != null && !jsonObj.get("serviceVersion").isJsonNull()) && !jsonObj.get("serviceVersion").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `serviceVersion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("serviceVersion").toString()));
       }
       if (jsonObj.get("services") != null && !jsonObj.get("services").isJsonNull()) {
         JsonArray jsonArrayservices = jsonObj.getAsJsonArray("services");
@@ -866,6 +1164,20 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
       if (jsonObj.get("switchPolicy") != null && !jsonObj.get("switchPolicy").isJsonNull()) {
         V1alpha1ClusterSpecComponentSpecsInnerSwitchPolicy.validateJsonObject(jsonObj.getAsJsonObject("switchPolicy"));
       }
+      if (jsonObj.get("systemAccounts") != null && !jsonObj.get("systemAccounts").isJsonNull()) {
+        JsonArray jsonArraysystemAccounts = jsonObj.getAsJsonArray("systemAccounts");
+        if (jsonArraysystemAccounts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("systemAccounts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `systemAccounts` to be an array in the JSON string but got `%s`", jsonObj.get("systemAccounts").toString()));
+          }
+
+          // validate the optional field `systemAccounts` (array)
+          for (int i = 0; i < jsonArraysystemAccounts.size(); i++) {
+            V1alpha1ClusterSpecComponentSpecsInnerSystemAccountsInner.validateJsonObject(jsonArraysystemAccounts.get(i).getAsJsonObject());
+          };
+        }
+      }
       if ((jsonObj.get("updateStrategy") != null && !jsonObj.get("updateStrategy").isJsonNull()) && !jsonObj.get("updateStrategy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updateStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updateStrategy").toString()));
       }
@@ -883,7 +1195,21 @@ public class V1alpha1ClusterSpecShardingSpecsInnerTemplate {
 
           // validate the optional field `volumeClaimTemplates` (array)
           for (int i = 0; i < jsonArrayvolumeClaimTemplates.size(); i++) {
-            V1alpha1ClusterSpecComponentSpecsInnerVolumeClaimTemplatesInner.validateJsonObject(jsonArrayvolumeClaimTemplates.get(i).getAsJsonObject());
+            V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumeClaimTemplatesInner.validateJsonObject(jsonArrayvolumeClaimTemplates.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("volumes") != null && !jsonObj.get("volumes").isJsonNull()) {
+        JsonArray jsonArrayvolumes = jsonObj.getAsJsonArray("volumes");
+        if (jsonArrayvolumes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("volumes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `volumes` to be an array in the JSON string but got `%s`", jsonObj.get("volumes").toString()));
+          }
+
+          // validate the optional field `volumes` (array)
+          for (int i = 0; i < jsonArrayvolumes.size(); i++) {
+            V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInner.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
           };
         }
       }

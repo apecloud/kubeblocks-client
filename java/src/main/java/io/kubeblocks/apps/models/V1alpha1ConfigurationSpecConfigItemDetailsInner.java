@@ -53,9 +53,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * ConfigurationItemDetail represents a specific configuration item within a configuration template.
+ * ConfigurationItemDetail corresponds to settings of a configuration template (a ConfigMap).
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigurationSpecConfigItemDetailsInner {
   public static final String SERIALIZED_NAME_CONFIG_FILE_PARAMS = "configFileParams";
   @SerializedName(SERIALIZED_NAME_CONFIG_FILE_PARAMS)
@@ -99,7 +99,7 @@ public class V1alpha1ConfigurationSpecConfigItemDetailsInner {
   }
 
    /**
-   * Used to set the parameters to be updated. It is optional.
+   * Specifies the user-defined configuration parameters.   When provided, the parameter values in &#x60;configFileParams&#x60; override the default configuration parameters. This allows users to override the default configuration according to their specific needs.
    * @return configFileParams
   **/
   @jakarta.annotation.Nullable
@@ -162,7 +162,7 @@ public class V1alpha1ConfigurationSpecConfigItemDetailsInner {
   }
 
    /**
-   * Defines the unique identifier of the configuration template. It must be a string of maximum 63 characters, and can only include lowercase alphanumeric characters, hyphens, and periods. The name must start and end with an alphanumeric character.
+   * Defines the unique identifier of the configuration template.   It must be a string of maximum 63 characters, and can only include lowercase alphanumeric characters, hyphens, and periods. The name must start and end with an alphanumeric character.
    * @return name
   **/
   @jakarta.annotation.Nonnull
@@ -183,7 +183,7 @@ public class V1alpha1ConfigurationSpecConfigItemDetailsInner {
   }
 
    /**
-   * Holds the configuration-related rerender. Preserves unknown fields and is optional.
+   * External controllers can trigger a configuration rerender by modifying this field.   Note: Currently, the &#x60;payload&#x60; field is opaque and its content is not interpreted by the system. Modifying this field will cause a rerender, regardless of the specific content of this field.
    * @return payload
   **/
   @jakarta.annotation.Nullable

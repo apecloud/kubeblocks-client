@@ -48,9 +48,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * Imposes restrictions on database parameter&#39;s rule.
+ * Defines a list of parameters including their names, default values, descriptions, types, and constraints (permissible values or the range of valid values).
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigConstraintSpecConfigurationSchema {
   public static final String SERIALIZED_NAME_CUE = "cue";
   @SerializedName(SERIALIZED_NAME_CUE)
@@ -70,7 +70,7 @@ public class V1alpha1ConfigConstraintSpecConfigurationSchema {
   }
 
    /**
-   * Enables providers to verify user configurations using the CUE language.
+   * Hold a string that contains a script written in CUE language that defines a list of configuration items. Each item is detailed with its name, default value, description, type (e.g. string, integer, float), and constraints (permissible values or the valid range of values).   CUE (Configure, Unify, Execute) is a declarative language designed for defining and validating complex data configurations. It is particularly useful in environments like K8s where complex configurations and validation rules are common.   This script functions as a validator for user-provided configurations, ensuring compliance with the established specifications and constraints.
    * @return cue
   **/
   @jakarta.annotation.Nullable
@@ -91,7 +91,7 @@ public class V1alpha1ConfigConstraintSpecConfigurationSchema {
   }
 
    /**
-   * Provides a mechanism that allows providers to validate the modified parameters using JSON.
+   * Generated from the &#39;cue&#39; field and transformed into a JSON format.
    * @return schema
   **/
   @jakarta.annotation.Nullable

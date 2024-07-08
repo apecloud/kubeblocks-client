@@ -48,9 +48,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * Defines the connection credential key in the secret created by spec.ConnectionCredential of the ClusterDefinition. It will be ignored when the \&quot;account\&quot; is set.
+ * Specifies the keys of the connection credential secret defined in &#x60;clusterDefinition.spec.ConnectionCredential&#x60;. It will be ignored when the &#x60;account&#x60; is set.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetConnectionCredentialKey {
   public static final String SERIALIZED_NAME_HOST_KEY = "hostKey";
   @SerializedName(SERIALIZED_NAME_HOST_KEY)
@@ -78,7 +78,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Defines the map key of the host in the connection credential secret.
+   * Defines the key of the host in the connection credential secret.
    * @return hostKey
   **/
   @jakarta.annotation.Nullable
@@ -99,7 +99,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Represents the key of the password in the ConnectionCredential secret. If not specified, the default key \&quot;password\&quot; is used.
+   * Represents the key of the password in the connection credential secret. If not specified, the default key \&quot;password\&quot; is used.
    * @return passwordKey
   **/
   @jakarta.annotation.Nullable
@@ -120,7 +120,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Indicates the map key of the port in the connection credential secret.
+   * Indicates map key of the port in the connection credential secret.
    * @return portKey
   **/
   @jakarta.annotation.Nullable
@@ -141,7 +141,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Represents the key of the username in the ConnectionCredential secret. If not specified, the default key \&quot;username\&quot; is used.
+   * Represents the key of the username in the connection credential secret. If not specified, the default key \&quot;username\&quot; is used.
    * @return usernameKey
   **/
   @jakarta.annotation.Nullable

@@ -50,7 +50,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ClusterSpecComponentSpecsInnerInstancesInnerVolumesInnerAzureDisk {
   public static final String SERIALIZED_NAME_CACHING_MODE = "cachingMode";
   @SerializedName(SERIALIZED_NAME_CACHING_MODE)

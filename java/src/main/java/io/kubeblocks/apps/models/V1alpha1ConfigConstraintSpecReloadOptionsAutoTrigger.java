@@ -48,9 +48,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * Used to automatically perform the reload command when certain conditions are met.
+ * Automatically perform the reload when specified conditions are met.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigConstraintSpecReloadOptionsAutoTrigger {
   public static final String SERIALIZED_NAME_PROCESS_NAME = "processName";
   @SerializedName(SERIALIZED_NAME_PROCESS_NAME)

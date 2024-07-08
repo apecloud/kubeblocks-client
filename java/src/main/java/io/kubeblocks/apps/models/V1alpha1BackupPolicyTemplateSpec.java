@@ -53,7 +53,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * Defines the desired state of the BackupPolicyTemplate.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpec {
   public static final String SERIALIZED_NAME_BACKUP_POLICIES = "backupPolicies";
   @SerializedName(SERIALIZED_NAME_BACKUP_POLICIES)
@@ -85,7 +85,7 @@ public class V1alpha1BackupPolicyTemplateSpec {
   }
 
    /**
-   * Represents an array of backup policy templates for the specified ComponentDefinition.
+   * Represents an array of BackupPolicy templates, with each template corresponding to a specified ComponentDefinition or to a group of ComponentDefinitions that are different versions of definitions of the same component.
    * @return backupPolicies
   **/
   @jakarta.annotation.Nonnull
@@ -106,10 +106,10 @@ public class V1alpha1BackupPolicyTemplateSpec {
   }
 
    /**
-   * Specifies a reference to the ClusterDefinition name. This is an immutable attribute that cannot be changed after creation.
+   * Specifies the name of a ClusterDefinition. This is an immutable attribute that cannot be changed after creation. And this field is deprecated since v0.9, consider using the ComponentDef instead.
    * @return clusterDefinitionRef
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getClusterDefinitionRef() {
     return clusterDefinitionRef;
   }
@@ -127,7 +127,7 @@ public class V1alpha1BackupPolicyTemplateSpec {
   }
 
    /**
-   * Acts as a unique identifier for this BackupPolicyTemplate. This identifier will be used as a suffix for the automatically generated backupPolicy name. It is required when multiple BackupPolicyTemplates exist to prevent backupPolicy override.
+   * Specifies a unique identifier for the BackupPolicyTemplate.   This identifier will be used as the suffix of the name of automatically generated BackupPolicy. This prevents unintended overwriting of BackupPolicies due to name conflicts when multiple BackupPolicyTemplates are present. For instance, using \&quot;backup-policy\&quot; for regular backups and \&quot;backup-policy-hscale\&quot; for horizontal-scale ops can differentiate the policies.
    * @return identifier
   **/
   @jakarta.annotation.Nullable
@@ -197,7 +197,6 @@ public class V1alpha1BackupPolicyTemplateSpec {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("backupPolicies");
-    openapiRequiredFields.add("clusterDefinitionRef");
   }
 
  /**
@@ -237,7 +236,7 @@ public class V1alpha1BackupPolicyTemplateSpec {
       for (int i = 0; i < jsonArraybackupPolicies.size(); i++) {
         V1alpha1BackupPolicyTemplateSpecBackupPoliciesInner.validateJsonObject(jsonArraybackupPolicies.get(i).getAsJsonObject());
       };
-      if (!jsonObj.get("clusterDefinitionRef").isJsonPrimitive()) {
+      if ((jsonObj.get("clusterDefinitionRef") != null && !jsonObj.get("clusterDefinitionRef").isJsonNull()) && !jsonObj.get("clusterDefinitionRef").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clusterDefinitionRef` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clusterDefinitionRef").toString()));
       }
       if ((jsonObj.get("identifier") != null && !jsonObj.get("identifier").isJsonNull()) && !jsonObj.get("identifier").isJsonPrimitive()) {

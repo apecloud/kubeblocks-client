@@ -25,6 +25,7 @@ import io.kubeblocks.apps.models.V1alpha1BackupPolicyTemplateSpecBackupPoliciesI
 import io.kubeblocks.apps.models.V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerRuntimeSettings;
 import io.kubeblocks.apps.models.V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTarget;
 import io.kubeblocks.apps.models.V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetVolumes;
+import io.kubeblocks.apps.models.V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetsInner;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner {
   public static final String SERIALIZED_NAME_ACTION_SET_NAME = "actionSetName";
   @SerializedName(SERIALIZED_NAME_ACTION_SET_NAME)
@@ -90,6 +91,10 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   public static final String SERIALIZED_NAME_TARGET_VOLUMES = "targetVolumes";
   @SerializedName(SERIALIZED_NAME_TARGET_VOLUMES)
   private V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetVolumes targetVolumes;
+
+  public static final String SERIALIZED_NAME_TARGETS = "targets";
+  @SerializedName(SERIALIZED_NAME_TARGETS)
+  private List<V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetsInner> targets;
 
   public V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner() {
   }
@@ -159,7 +164,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Defines the mapping between the environment variables of the cluster and the keys of the environment values.
+   * Specifies a mapping of an environment variable key to the appropriate version of the tool image required for backups, as determined by ClusterVersion and ComponentDefinition. The environment variable is then injected into the container executing the backup task.
    * @return envMapping
   **/
   @jakarta.annotation.Nullable
@@ -278,6 +283,35 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
 
+  public V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner targets(List<V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetsInner> targets) {
+    
+    this.targets = targets;
+    return this;
+  }
+
+  public V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner addTargetsItem(V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetsInner targetsItem) {
+    if (this.targets == null) {
+      this.targets = new ArrayList<>();
+    }
+    this.targets.add(targetsItem);
+    return this;
+  }
+
+   /**
+   * Specifies multiple target information for backup operations. This includes details such as the target pod and cluster connection credentials. All specified targets will be backed up collectively.
+   * @return targets
+  **/
+  @jakarta.annotation.Nullable
+  public List<V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetsInner> getTargets() {
+    return targets;
+  }
+
+
+  public void setTargets(List<V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetsInner> targets) {
+    this.targets = targets;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -295,12 +329,13 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
         Objects.equals(this.runtimeSettings, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner.runtimeSettings) &&
         Objects.equals(this.snapshotVolumes, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner.snapshotVolumes) &&
         Objects.equals(this.target, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner.target) &&
-        Objects.equals(this.targetVolumes, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner.targetVolumes);
+        Objects.equals(this.targetVolumes, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner.targetVolumes) &&
+        Objects.equals(this.targets, v1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInner.targets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actionSetName, env, envMapping, name, runtimeSettings, snapshotVolumes, target, targetVolumes);
+    return Objects.hash(actionSetName, env, envMapping, name, runtimeSettings, snapshotVolumes, target, targetVolumes, targets);
   }
 
   @Override
@@ -315,6 +350,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
     sb.append("    snapshotVolumes: ").append(toIndentedString(snapshotVolumes)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    targetVolumes: ").append(toIndentedString(targetVolumes)).append("\n");
+    sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -345,6 +381,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
     openapiFields.add("snapshotVolumes");
     openapiFields.add("target");
     openapiFields.add("targetVolumes");
+    openapiFields.add("targets");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -423,6 +460,20 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
       // validate the optional field `targetVolumes`
       if (jsonObj.get("targetVolumes") != null && !jsonObj.get("targetVolumes").isJsonNull()) {
         V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetVolumes.validateJsonObject(jsonObj.getAsJsonObject("targetVolumes"));
+      }
+      if (jsonObj.get("targets") != null && !jsonObj.get("targets").isJsonNull()) {
+        JsonArray jsonArraytargets = jsonObj.getAsJsonArray("targets");
+        if (jsonArraytargets != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("targets").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `targets` to be an array in the JSON string but got `%s`", jsonObj.get("targets").toString()));
+          }
+
+          // validate the optional field `targets` (array)
+          for (int i = 0; i < jsonArraytargets.size(); i++) {
+            V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetsInner.validateJsonObject(jsonArraytargets.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

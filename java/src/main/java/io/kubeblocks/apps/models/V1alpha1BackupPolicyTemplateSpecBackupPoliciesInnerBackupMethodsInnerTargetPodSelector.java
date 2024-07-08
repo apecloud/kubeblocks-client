@@ -55,7 +55,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * Used to find the target pod. The volumes of the target pod will be backed up.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInnerTargetPodSelector {
   public static final String SERIALIZED_NAME_MATCH_EXPRESSIONS = "matchExpressions";
   @SerializedName(SERIALIZED_NAME_MATCH_EXPRESSIONS)
@@ -66,7 +66,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   private Map<String, String> matchLabels = new HashMap<>();
 
   /**
-   * Specifies the strategy to select the target pod when multiple pods are selected. Valid values are: Any: select any one pod that match the labelsSelector.   - &#x60;Any&#x60;: select any one pod that match the labelsSelector. - &#x60;All&#x60;: select all pods that match the labelsSelector.
+   * Specifies the strategy to select the target pod when multiple pods are selected. Valid values are:   - &#x60;Any&#x60;: select any one pod that match the labelsSelector. - &#x60;All&#x60;: select all pods that match the labelsSelector. The backup data for the current pod will be stored in a subdirectory named after the pod.
    */
   @JsonAdapter(StrategyEnum.Adapter.class)
   public enum StrategyEnum {
@@ -184,7 +184,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerBackupMethodsInn
   }
 
    /**
-   * Specifies the strategy to select the target pod when multiple pods are selected. Valid values are: Any: select any one pod that match the labelsSelector.   - &#x60;Any&#x60;: select any one pod that match the labelsSelector. - &#x60;All&#x60;: select all pods that match the labelsSelector.
+   * Specifies the strategy to select the target pod when multiple pods are selected. Valid values are:   - &#x60;Any&#x60;: select any one pod that match the labelsSelector. - &#x60;All&#x60;: select all pods that match the labelsSelector. The backup data for the current pod will be stored in a subdirectory named after the pod.
    * @return strategy
   **/
   @jakarta.annotation.Nullable

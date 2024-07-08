@@ -3,13 +3,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.1
-  creationTimestamp: "2024-05-14T07:40:39Z"
-  generation: 3
+  creationTimestamp: "2024-07-08T07:28:47Z"
+  generation: 1
   labels:
     app.kubernetes.io/name: kubeblocks
   name: componentdefinitions.apps.kubeblocks.io
-  resourceVersion: "551329"
-  uid: e6c35d7a-d0a8-4fb5-b942-e317b1262c3e
+  resourceVersion: "116527"
+  uid: 0490d15c-eb98-44e6-b1ae-e28145986ad4
 spec:
   conversion:
     strategy: None
@@ -2709,6 +2709,9 @@ spec:
                         - scrapePort
                       type: object
                   type: object
+                podManagementPolicy:
+                  description: "InstanceSet controls the creation of pods during initial scale up, replacement of pods on nodes, and scaling down. \n - `OrderedReady`: Creates pods in increasing order (pod-0, then pod-1, etc). The controller waits until each pod is ready before continuing. Pods are removed in reverse order when scaling down. - `Parallel`: Creates pods in parallel to match the desired scale without waiting. All pods are deleted at once when scaling down."
+                  type: string
                 policyRules:
                   description: "Defines the namespaced policy rules required by the Component. \n The `policyRules` field is an array of `rbacv1.PolicyRule` objects that define the policy rules needed by the Component to operate within a namespace. These policy rules determine the permissions and verbs the Component is allowed to perform on Kubernetes resources within the namespace. \n The purpose of this field is to automatically generate the necessary RBAC roles for the Component based on the specified policy rules. This ensures that the Pods in the Component has appropriate permissions to function. \n Note: This field is currently non-functional and is reserved for future implementation. \n This field is immutable."
                   items:
@@ -7323,7 +7326,7 @@ spec:
                     properties:
                       initAccount:
                         default: false
-                        description: "Indicates if this account is the unique system initialization account (e.g., MySQL root). Only one system initialization account is permitted. \n This field is immutable once set."
+                        description: "Indicates if this account is a system initialization account (e.g., MySQL root). \n This field is immutable once set."
                         type: boolean
                       name:
                         description: "Specifies the unique identifier for the account. This name is used by other entities to reference the account. \n This field is immutable once set."
@@ -7869,12 +7872,12 @@ status:
       - cmpd
     singular: componentdefinition
   conditions:
-    - lastTransitionTime: "2024-05-14T07:40:39Z"
+    - lastTransitionTime: "2024-07-08T07:28:47Z"
       message: no conflicts found
       reason: NoConflicts
       status: "True"
       type: NamesAccepted
-    - lastTransitionTime: "2024-05-14T07:40:39Z"
+    - lastTransitionTime: "2024-07-08T07:28:48Z"
       message: the initial names have been accepted
       reason: InitialNamesAccepted
       status: "True"
