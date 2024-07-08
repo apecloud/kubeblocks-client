@@ -3,13 +3,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.1
-  creationTimestamp: "2024-05-14T07:40:45Z"
+  creationTimestamp: "2024-07-08T07:28:46Z"
   generation: 1
   labels:
     app.kubernetes.io/name: kubeblocks
   name: addons.extensions.kubeblocks.io
-  resourceVersion: "497"
-  uid: 24b615de-f402-499b-880e-a73034cccb6e
+  resourceVersion: "116485"
+  uid: e512fcb8-d64d-4d2e-a958-bbdfee901492
 spec:
   conversion:
     strategy: None
@@ -606,12 +606,12 @@ status:
     plural: addons
     singular: addon
   conditions:
-    - lastTransitionTime: "2024-05-14T07:40:45Z"
+    - lastTransitionTime: "2024-07-08T07:28:46Z"
       message: no conflicts found
       reason: NoConflicts
       status: "True"
       type: NamesAccepted
-    - lastTransitionTime: "2024-05-14T07:40:45Z"
+    - lastTransitionTime: "2024-07-08T07:28:46Z"
       message: the initial names have been accepted
       reason: InitialNamesAccepted
       status: "True"

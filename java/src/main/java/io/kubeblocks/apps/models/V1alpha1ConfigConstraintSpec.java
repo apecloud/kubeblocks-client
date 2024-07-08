@@ -24,9 +24,9 @@ import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecConfigurationSchema
 import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner;
 import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecFormatterConfig;
 import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecReloadOptions;
+import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup;
 import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecScriptConfigsInner;
 import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecSelector;
-import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecToolsImageSpec;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +59,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * ConfigConstraintSpec defines the desired state of ConfigConstraint
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigConstraintSpec {
   public static final String SERIALIZED_NAME_CFG_SCHEMA_TOP_LEVEL_NAME = "cfgSchemaTopLevelName";
   @SerializedName(SERIALIZED_NAME_CFG_SCHEMA_TOP_LEVEL_NAME)
@@ -73,13 +73,13 @@ public class V1alpha1ConfigConstraintSpec {
   @SerializedName(SERIALIZED_NAME_DOWNWARD_A_P_I_OPTIONS)
   private List<V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner> downwardAPIOptions;
 
+  public static final String SERIALIZED_NAME_DYNAMIC_ACTION_CAN_BE_MERGED = "dynamicActionCanBeMerged";
+  @SerializedName(SERIALIZED_NAME_DYNAMIC_ACTION_CAN_BE_MERGED)
+  private Boolean dynamicActionCanBeMerged;
+
   public static final String SERIALIZED_NAME_DYNAMIC_PARAMETERS = "dynamicParameters";
   @SerializedName(SERIALIZED_NAME_DYNAMIC_PARAMETERS)
   private List<String> dynamicParameters;
-
-  public static final String SERIALIZED_NAME_FORCE_HOT_UPDATE = "forceHotUpdate";
-  @SerializedName(SERIALIZED_NAME_FORCE_HOT_UPDATE)
-  private Boolean forceHotUpdate;
 
   public static final String SERIALIZED_NAME_FORMATTER_CONFIG = "formatterConfig";
   @SerializedName(SERIALIZED_NAME_FORMATTER_CONFIG)
@@ -92,6 +92,10 @@ public class V1alpha1ConfigConstraintSpec {
   public static final String SERIALIZED_NAME_RELOAD_OPTIONS = "reloadOptions";
   @SerializedName(SERIALIZED_NAME_RELOAD_OPTIONS)
   private V1alpha1ConfigConstraintSpecReloadOptions reloadOptions;
+
+  public static final String SERIALIZED_NAME_RELOAD_STATIC_PARAMS_BEFORE_RESTART = "reloadStaticParamsBeforeRestart";
+  @SerializedName(SERIALIZED_NAME_RELOAD_STATIC_PARAMS_BEFORE_RESTART)
+  private Boolean reloadStaticParamsBeforeRestart;
 
   public static final String SERIALIZED_NAME_SCRIPT_CONFIGS = "scriptConfigs";
   @SerializedName(SERIALIZED_NAME_SCRIPT_CONFIGS)
@@ -107,7 +111,7 @@ public class V1alpha1ConfigConstraintSpec {
 
   public static final String SERIALIZED_NAME_TOOLS_IMAGE_SPEC = "toolsImageSpec";
   @SerializedName(SERIALIZED_NAME_TOOLS_IMAGE_SPEC)
-  private V1alpha1ConfigConstraintSpecToolsImageSpec toolsImageSpec;
+  private V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup toolsImageSpec;
 
   public V1alpha1ConfigConstraintSpec() {
   }
@@ -119,7 +123,7 @@ public class V1alpha1ConfigConstraintSpec {
   }
 
    /**
-   * The cue type name, which generates the openapi schema.
+   * Specifies the top-level key in the &#39;configurationSchema.cue&#39; that organizes the validation rules for parameters. This key must exist within the CUE script defined in &#39;configurationSchema.cue&#39;.
    * @return cfgSchemaTopLevelName
   **/
   @jakarta.annotation.Nullable
@@ -169,7 +173,7 @@ public class V1alpha1ConfigConstraintSpec {
   }
 
    /**
-   * Used to monitor pod fields.
+   * Specifies a list of actions to execute specified commands based on Pod labels.   It utilizes the K8s Downward API to mount label information as a volume into the pod. The &#39;config-manager&#39; sidecar container watches for changes in the role label and dynamically invoke registered commands (usually execute some SQL statements) when a change is detected.   It is designed for scenarios where:   - Replicas with different roles have different configurations, such as Redis primary &amp; secondary replicas. - After a role switch (e.g., from secondary to primary), some changes in configuration are needed to reflect the new role.
    * @return downwardAPIOptions
   **/
   @jakarta.annotation.Nullable
@@ -180,6 +184,27 @@ public class V1alpha1ConfigConstraintSpec {
 
   public void setDownwardAPIOptions(List<V1alpha1ConfigConstraintSpecDownwardAPIOptionsInner> downwardAPIOptions) {
     this.downwardAPIOptions = downwardAPIOptions;
+  }
+
+
+  public V1alpha1ConfigConstraintSpec dynamicActionCanBeMerged(Boolean dynamicActionCanBeMerged) {
+    
+    this.dynamicActionCanBeMerged = dynamicActionCanBeMerged;
+    return this;
+  }
+
+   /**
+   * Indicates whether to consolidate dynamic reload and restart actions into a single restart.   - If true, updates requiring both actions will result in only a restart, merging the actions. - If false, updates will trigger both actions executed sequentially: first dynamic reload, then restart.   This flag allows for more efficient handling of configuration changes by potentially eliminating an unnecessary reload step.
+   * @return dynamicActionCanBeMerged
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getDynamicActionCanBeMerged() {
+    return dynamicActionCanBeMerged;
+  }
+
+
+  public void setDynamicActionCanBeMerged(Boolean dynamicActionCanBeMerged) {
+    this.dynamicActionCanBeMerged = dynamicActionCanBeMerged;
   }
 
 
@@ -198,7 +223,7 @@ public class V1alpha1ConfigConstraintSpec {
   }
 
    /**
-   * A list of DynamicParameter. Modifications of these parameters trigger a config dynamic reload without process restart.
+   * List dynamic parameters. Modifications to these parameters trigger a configuration reload without requiring a process restart.
    * @return dynamicParameters
   **/
   @jakarta.annotation.Nullable
@@ -209,27 +234,6 @@ public class V1alpha1ConfigConstraintSpec {
 
   public void setDynamicParameters(List<String> dynamicParameters) {
     this.dynamicParameters = dynamicParameters;
-  }
-
-
-  public V1alpha1ConfigConstraintSpec forceHotUpdate(Boolean forceHotUpdate) {
-    
-    this.forceHotUpdate = forceHotUpdate;
-    return this;
-  }
-
-   /**
-   * Indicates whether to execute hot update parameters when the pod needs to be restarted. If set to true, the controller performs the hot update and then restarts the pod.
-   * @return forceHotUpdate
-  **/
-  @jakarta.annotation.Nullable
-  public Boolean getForceHotUpdate() {
-    return forceHotUpdate;
-  }
-
-
-  public void setForceHotUpdate(Boolean forceHotUpdate) {
-    this.forceHotUpdate = forceHotUpdate;
   }
 
 
@@ -269,7 +273,7 @@ public class V1alpha1ConfigConstraintSpec {
   }
 
    /**
-   * Describes parameters that users are prohibited from modifying.
+   * Lists the parameters that cannot be modified once set. Attempting to change any of these parameters will be ignored.
    * @return immutableParameters
   **/
   @jakarta.annotation.Nullable
@@ -304,6 +308,27 @@ public class V1alpha1ConfigConstraintSpec {
   }
 
 
+  public V1alpha1ConfigConstraintSpec reloadStaticParamsBeforeRestart(Boolean reloadStaticParamsBeforeRestart) {
+    
+    this.reloadStaticParamsBeforeRestart = reloadStaticParamsBeforeRestart;
+    return this;
+  }
+
+   /**
+   * Configures whether the dynamic reload specified in &#x60;reloadOptions&#x60; applies only to dynamic parameters or to all parameters (including static parameters).   - false (default): Only modifications to the dynamic parameters listed in &#x60;dynamicParameters&#x60; will trigger a dynamic reload. - true: Modifications to both dynamic parameters listed in &#x60;dynamicParameters&#x60; and static parameters listed in &#x60;staticParameters&#x60; will trigger a dynamic reload. The \&quot;true\&quot; option is for certain engines that require static parameters to be set via SQL statements before they can take effect on restart.
+   * @return reloadStaticParamsBeforeRestart
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getReloadStaticParamsBeforeRestart() {
+    return reloadStaticParamsBeforeRestart;
+  }
+
+
+  public void setReloadStaticParamsBeforeRestart(Boolean reloadStaticParamsBeforeRestart) {
+    this.reloadStaticParamsBeforeRestart = reloadStaticParamsBeforeRestart;
+  }
+
+
   public V1alpha1ConfigConstraintSpec scriptConfigs(List<V1alpha1ConfigConstraintSpecScriptConfigsInner> scriptConfigs) {
     
     this.scriptConfigs = scriptConfigs;
@@ -319,7 +344,7 @@ public class V1alpha1ConfigConstraintSpec {
   }
 
    /**
-   * A list of ScriptConfig. These scripts can be used by volume trigger, downward trigger, or tool image.
+   * A list of ScriptConfig Object.   Each ScriptConfig object specifies a ConfigMap that contains script files that should be mounted inside the pod. The scripts are mounted as volumes and can be referenced and executed by the dynamic reload and DownwardAction to perform specific tasks or configurations.
    * @return scriptConfigs
   **/
   @jakarta.annotation.Nullable
@@ -369,7 +394,7 @@ public class V1alpha1ConfigConstraintSpec {
   }
 
    /**
-   * A list of StaticParameter. Modifications of these parameters trigger a process restart.
+   * List static parameters. Modifications to any of these parameters require a restart of the process to take effect.
    * @return staticParameters
   **/
   @jakarta.annotation.Nullable
@@ -383,7 +408,7 @@ public class V1alpha1ConfigConstraintSpec {
   }
 
 
-  public V1alpha1ConfigConstraintSpec toolsImageSpec(V1alpha1ConfigConstraintSpecToolsImageSpec toolsImageSpec) {
+  public V1alpha1ConfigConstraintSpec toolsImageSpec(V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup toolsImageSpec) {
     
     this.toolsImageSpec = toolsImageSpec;
     return this;
@@ -394,12 +419,12 @@ public class V1alpha1ConfigConstraintSpec {
    * @return toolsImageSpec
   **/
   @jakarta.annotation.Nullable
-  public V1alpha1ConfigConstraintSpecToolsImageSpec getToolsImageSpec() {
+  public V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup getToolsImageSpec() {
     return toolsImageSpec;
   }
 
 
-  public void setToolsImageSpec(V1alpha1ConfigConstraintSpecToolsImageSpec toolsImageSpec) {
+  public void setToolsImageSpec(V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup toolsImageSpec) {
     this.toolsImageSpec = toolsImageSpec;
   }
 
@@ -417,11 +442,12 @@ public class V1alpha1ConfigConstraintSpec {
     return Objects.equals(this.cfgSchemaTopLevelName, v1alpha1ConfigConstraintSpec.cfgSchemaTopLevelName) &&
         Objects.equals(this.configurationSchema, v1alpha1ConfigConstraintSpec.configurationSchema) &&
         Objects.equals(this.downwardAPIOptions, v1alpha1ConfigConstraintSpec.downwardAPIOptions) &&
+        Objects.equals(this.dynamicActionCanBeMerged, v1alpha1ConfigConstraintSpec.dynamicActionCanBeMerged) &&
         Objects.equals(this.dynamicParameters, v1alpha1ConfigConstraintSpec.dynamicParameters) &&
-        Objects.equals(this.forceHotUpdate, v1alpha1ConfigConstraintSpec.forceHotUpdate) &&
         Objects.equals(this.formatterConfig, v1alpha1ConfigConstraintSpec.formatterConfig) &&
         Objects.equals(this.immutableParameters, v1alpha1ConfigConstraintSpec.immutableParameters) &&
         Objects.equals(this.reloadOptions, v1alpha1ConfigConstraintSpec.reloadOptions) &&
+        Objects.equals(this.reloadStaticParamsBeforeRestart, v1alpha1ConfigConstraintSpec.reloadStaticParamsBeforeRestart) &&
         Objects.equals(this.scriptConfigs, v1alpha1ConfigConstraintSpec.scriptConfigs) &&
         Objects.equals(this.selector, v1alpha1ConfigConstraintSpec.selector) &&
         Objects.equals(this.staticParameters, v1alpha1ConfigConstraintSpec.staticParameters) &&
@@ -430,7 +456,7 @@ public class V1alpha1ConfigConstraintSpec {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cfgSchemaTopLevelName, configurationSchema, downwardAPIOptions, dynamicParameters, forceHotUpdate, formatterConfig, immutableParameters, reloadOptions, scriptConfigs, selector, staticParameters, toolsImageSpec);
+    return Objects.hash(cfgSchemaTopLevelName, configurationSchema, downwardAPIOptions, dynamicActionCanBeMerged, dynamicParameters, formatterConfig, immutableParameters, reloadOptions, reloadStaticParamsBeforeRestart, scriptConfigs, selector, staticParameters, toolsImageSpec);
   }
 
   @Override
@@ -440,11 +466,12 @@ public class V1alpha1ConfigConstraintSpec {
     sb.append("    cfgSchemaTopLevelName: ").append(toIndentedString(cfgSchemaTopLevelName)).append("\n");
     sb.append("    configurationSchema: ").append(toIndentedString(configurationSchema)).append("\n");
     sb.append("    downwardAPIOptions: ").append(toIndentedString(downwardAPIOptions)).append("\n");
+    sb.append("    dynamicActionCanBeMerged: ").append(toIndentedString(dynamicActionCanBeMerged)).append("\n");
     sb.append("    dynamicParameters: ").append(toIndentedString(dynamicParameters)).append("\n");
-    sb.append("    forceHotUpdate: ").append(toIndentedString(forceHotUpdate)).append("\n");
     sb.append("    formatterConfig: ").append(toIndentedString(formatterConfig)).append("\n");
     sb.append("    immutableParameters: ").append(toIndentedString(immutableParameters)).append("\n");
     sb.append("    reloadOptions: ").append(toIndentedString(reloadOptions)).append("\n");
+    sb.append("    reloadStaticParamsBeforeRestart: ").append(toIndentedString(reloadStaticParamsBeforeRestart)).append("\n");
     sb.append("    scriptConfigs: ").append(toIndentedString(scriptConfigs)).append("\n");
     sb.append("    selector: ").append(toIndentedString(selector)).append("\n");
     sb.append("    staticParameters: ").append(toIndentedString(staticParameters)).append("\n");
@@ -474,11 +501,12 @@ public class V1alpha1ConfigConstraintSpec {
     openapiFields.add("cfgSchemaTopLevelName");
     openapiFields.add("configurationSchema");
     openapiFields.add("downwardAPIOptions");
+    openapiFields.add("dynamicActionCanBeMerged");
     openapiFields.add("dynamicParameters");
-    openapiFields.add("forceHotUpdate");
     openapiFields.add("formatterConfig");
     openapiFields.add("immutableParameters");
     openapiFields.add("reloadOptions");
+    openapiFields.add("reloadStaticParamsBeforeRestart");
     openapiFields.add("scriptConfigs");
     openapiFields.add("selector");
     openapiFields.add("staticParameters");
@@ -575,7 +603,7 @@ public class V1alpha1ConfigConstraintSpec {
       }
       // validate the optional field `toolsImageSpec`
       if (jsonObj.get("toolsImageSpec") != null && !jsonObj.get("toolsImageSpec").isJsonNull()) {
-        V1alpha1ConfigConstraintSpecToolsImageSpec.validateJsonObject(jsonObj.getAsJsonObject("toolsImageSpec"));
+        V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup.validateJsonObject(jsonObj.getAsJsonObject("toolsImageSpec"));
       }
   }
 

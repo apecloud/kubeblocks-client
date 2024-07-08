@@ -50,14 +50,14 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * Used to trigger a reload by sending a specific Unix signal to the process.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigConstraintSpecReloadOptionsUnixSignalTrigger {
   public static final String SERIALIZED_NAME_PROCESS_NAME = "processName";
   @SerializedName(SERIALIZED_NAME_PROCESS_NAME)
   private String processName;
 
   /**
-   * Represents a valid Unix signal. Refer to the following URL for a list of all Unix signals: ../../pkg/configuration/configmap/handler.go:allUnixSignals
+   * Specifies a valid Unix signal to be sent. For a comprehensive list of all Unix signals, see: ../../pkg/configuration/configmap/handler.go:allUnixSignals
    */
   @JsonAdapter(SignalEnum.Adapter.class)
   public enum SignalEnum {
@@ -175,7 +175,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsUnixSignalTrigger {
   }
 
    /**
-   * Represents the name of the process to which the Unix signal is sent.
+   * Identifies the name of the process to which the Unix signal will be sent.
    * @return processName
   **/
   @jakarta.annotation.Nonnull
@@ -196,7 +196,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsUnixSignalTrigger {
   }
 
    /**
-   * Represents a valid Unix signal. Refer to the following URL for a list of all Unix signals: ../../pkg/configuration/configmap/handler.go:allUnixSignals
+   * Specifies a valid Unix signal to be sent. For a comprehensive list of all Unix signals, see: ../../pkg/configuration/configmap/handler.go:allUnixSignals
    * @return signal
   **/
   @jakarta.annotation.Nonnull

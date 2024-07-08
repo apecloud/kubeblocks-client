@@ -53,7 +53,7 @@ import io.kubernetes.client.openapi.JSON;
 /**
  * ConfigurationSpec defines the desired state of a Configuration resource.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigurationSpec {
   public static final String SERIALIZED_NAME_CLUSTER_REF = "clusterRef";
   @SerializedName(SERIALIZED_NAME_CLUSTER_REF)
@@ -77,7 +77,7 @@ public class V1alpha1ConfigurationSpec {
   }
 
    /**
-   * Specifies the name of the cluster that this configuration is associated with.
+   * Specifies the name of the Cluster that this configuration is associated with.
    * @return clusterRef
   **/
   @jakarta.annotation.Nonnull
@@ -98,7 +98,7 @@ public class V1alpha1ConfigurationSpec {
   }
 
    /**
-   * Represents the name of the cluster component that this configuration pertains to.
+   * Represents the name of the Component that this configuration pertains to.
    * @return componentName
   **/
   @jakarta.annotation.Nonnull
@@ -127,7 +127,7 @@ public class V1alpha1ConfigurationSpec {
   }
 
    /**
-   * An array of ConfigurationItemDetail objects that describe user-defined configuration templates.
+   * ConfigItemDetails is an array of ConfigurationItemDetail objects.   Each ConfigurationItemDetail corresponds to a configuration template, which is a ConfigMap that contains multiple configuration files. Each configuration file is stored as a key-value pair within the ConfigMap.   The ConfigurationItemDetail includes information such as:   - The configuration template (a ConfigMap) - The corresponding ConfigConstraint (constraints and validation rules for the configuration) - Volume mounts (for mounting the configuration files)
    * @return configItemDetails
   **/
   @jakarta.annotation.Nullable

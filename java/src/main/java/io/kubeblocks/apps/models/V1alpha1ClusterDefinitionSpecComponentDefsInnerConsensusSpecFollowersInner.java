@@ -48,9 +48,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * V1alpha1ClusterDefinitionSpecComponentDefsInnerConsensusSpecFollowersInner
+ * ConsensusMember is deprecated since v0.7.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ClusterDefinitionSpecComponentDefsInnerConsensusSpecFollowersInner {
   /**
    * Specifies the services that this member is capable of providing.

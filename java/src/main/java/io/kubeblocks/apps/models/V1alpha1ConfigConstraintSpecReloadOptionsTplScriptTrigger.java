@@ -48,9 +48,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * Used to perform the reload command via a Go template script.
+ * Enables reloading process using a Go template script.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigConstraintSpecReloadOptionsTplScriptTrigger {
   public static final String SERIALIZED_NAME_NAMESPACE = "namespace";
   @SerializedName(SERIALIZED_NAME_NAMESPACE)
@@ -74,7 +74,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsTplScriptTrigger {
   }
 
    /**
-   * Specifies the namespace where the referenced tpl script ConfigMap object resides. If left empty, it defaults to the \&quot;default\&quot; namespace.
+   * Specifies the namespace for the ConfigMap. If not specified, it defaults to the \&quot;default\&quot; namespace.
    * @return namespace
   **/
   @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsTplScriptTrigger {
   }
 
    /**
-   * Specifies the reference to the ConfigMap that contains the script to be executed for reload.
+   * Specifies the reference to the ConfigMap containing the scripts.
    * @return scriptConfigMapRef
   **/
   @jakarta.annotation.Nonnull
@@ -116,7 +116,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsTplScriptTrigger {
   }
 
    /**
-   * Specifies whether to synchronize updates parameters to the config manager.
+   * Determines whether parameter updates should be synchronized with the \&quot;config-manager\&quot;. Specifies the controller&#39;s reload strategy:   - If set to &#39;True&#39;, the controller executes the reload action in synchronous mode, pausing execution until the reload completes. - If set to &#39;False&#39;, the controller executes the reload action in asynchronous mode, updating the ConfigMap without waiting for the reload process to finish.
    * @return sync
   **/
   @jakarta.annotation.Nullable

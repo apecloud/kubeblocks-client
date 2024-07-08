@@ -3,13 +3,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.1
-  creationTimestamp: "2024-05-14T07:40:39Z"
+  creationTimestamp: "2024-07-08T07:28:47Z"
   generation: 1
   labels:
     app.kubernetes.io/name: kubeblocks
   name: componentresourceconstraints.apps.kubeblocks.io
-  resourceVersion: "436"
-  uid: f837dcf9-31e1-4d63-92ca-2dc7046f088a
+  resourceVersion: "116531"
+  uid: 0cffcce0-9a65-4eb8-8903-72e9de7cea39
 spec:
   conversion:
     strategy: None
@@ -212,12 +212,12 @@ status:
       - crc
     singular: componentresourceconstraint
   conditions:
-    - lastTransitionTime: "2024-05-14T07:40:39Z"
+    - lastTransitionTime: "2024-07-08T07:28:48Z"
       message: no conflicts found
       reason: NoConflicts
       status: "True"
       type: NamesAccepted
-    - lastTransitionTime: "2024-05-14T07:40:39Z"
+    - lastTransitionTime: "2024-07-08T07:28:48Z"
       message: the initial names have been accepted
       reason: InitialNamesAccepted
       status: "True"

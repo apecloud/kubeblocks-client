@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerScriptConfig;
+import io.kubeblocks.apps.models.V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,20 +52,78 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * Used to perform the reload command via a shell script.
+ * Allows to execute a custom shell script to reload the process.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
+  public static final String SERIALIZED_NAME_BATCH_PARAMS_FORMATTER_TEMPLATE = "batchParamsFormatterTemplate";
+  @SerializedName(SERIALIZED_NAME_BATCH_PARAMS_FORMATTER_TEMPLATE)
+  private String batchParamsFormatterTemplate;
+
+  public static final String SERIALIZED_NAME_BATCH_RELOAD = "batchReload";
+  @SerializedName(SERIALIZED_NAME_BATCH_RELOAD)
+  private Boolean batchReload;
+
   public static final String SERIALIZED_NAME_COMMAND = "command";
   @SerializedName(SERIALIZED_NAME_COMMAND)
   private List<String> command = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_SCRIPT_CONFIG = "scriptConfig";
+  @SerializedName(SERIALIZED_NAME_SCRIPT_CONFIG)
+  private V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerScriptConfig scriptConfig;
 
   public static final String SERIALIZED_NAME_SYNC = "sync";
   @SerializedName(SERIALIZED_NAME_SYNC)
   private Boolean sync;
 
+  public static final String SERIALIZED_NAME_TOOLS_SETUP = "toolsSetup";
+  @SerializedName(SERIALIZED_NAME_TOOLS_SETUP)
+  private V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup toolsSetup;
+
   public V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger() {
   }
+
+  public V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger batchParamsFormatterTemplate(String batchParamsFormatterTemplate) {
+    
+    this.batchParamsFormatterTemplate = batchParamsFormatterTemplate;
+    return this;
+  }
+
+   /**
+   * Specifies a Go template string for formatting batch input data. It&#39;s used when &#x60;batchReload&#x60; is &#39;True&#39; to format data passed into STDIN of the script. The template accesses key-value pairs of updated parameters via the &#39;$&#39; variable. This allows for custom formatting of the input data.   Example template:   &#x60;&#x60;&#x60;yaml batchParamsFormatterTemplate: |- {{- range $pKey, $pValue :&#x3D; $ }} {{ printf \&quot;%s:%s\&quot; $pKey $pValue }} {{- end }} &#x60;&#x60;&#x60;   This example generates batch input data in a key:value format, sorted by keys. &#x60;&#x60;&#x60; key1:value1 key2:value2 key3:value3 &#x60;&#x60;&#x60;   If not specified, the default format is key&#x3D;value, sorted by keys, for each updated parameter. &#x60;&#x60;&#x60; key1&#x3D;value1 key2&#x3D;value2 key3&#x3D;value3 &#x60;&#x60;&#x60;
+   * @return batchParamsFormatterTemplate
+  **/
+  @jakarta.annotation.Nullable
+  public String getBatchParamsFormatterTemplate() {
+    return batchParamsFormatterTemplate;
+  }
+
+
+  public void setBatchParamsFormatterTemplate(String batchParamsFormatterTemplate) {
+    this.batchParamsFormatterTemplate = batchParamsFormatterTemplate;
+  }
+
+
+  public V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger batchReload(Boolean batchReload) {
+    
+    this.batchReload = batchReload;
+    return this;
+  }
+
+   /**
+   * Controls whether parameter updates are processed individually or collectively in a batch:   - &#39;True&#39;: Processes all changes in one batch reload. - &#39;False&#39;: Processes each change individually.   Defaults to &#39;False&#39; if unspecified.
+   * @return batchReload
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getBatchReload() {
+    return batchReload;
+  }
+
+
+  public void setBatchReload(Boolean batchReload) {
+    this.batchReload = batchReload;
+  }
+
 
   public V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger command(List<String> command) {
     
@@ -80,7 +140,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
   }
 
    /**
-   * Specifies the list of strings used to execute for reload.
+   * Specifies the command to execute in order to reload the process. It should be a valid shell command.
    * @return command
   **/
   @jakarta.annotation.Nonnull
@@ -94,6 +154,27 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
   }
 
 
+  public V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger scriptConfig(V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerScriptConfig scriptConfig) {
+    
+    this.scriptConfig = scriptConfig;
+    return this;
+  }
+
+   /**
+   * Get scriptConfig
+   * @return scriptConfig
+  **/
+  @jakarta.annotation.Nullable
+  public V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerScriptConfig getScriptConfig() {
+    return scriptConfig;
+  }
+
+
+  public void setScriptConfig(V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerScriptConfig scriptConfig) {
+    this.scriptConfig = scriptConfig;
+  }
+
+
   public V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger sync(Boolean sync) {
     
     this.sync = sync;
@@ -101,7 +182,7 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
   }
 
    /**
-   * Specifies whether to synchronize updates parameters to the config manager.
+   * Determines the synchronization mode of parameter updates with \&quot;config-manager\&quot;.   - &#39;True&#39;: Executes reload actions synchronously, pausing until completion. - &#39;False&#39;: Executes reload actions asynchronously, without waiting for completion.
    * @return sync
   **/
   @jakarta.annotation.Nullable
@@ -115,6 +196,27 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
   }
 
 
+  public V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger toolsSetup(V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup toolsSetup) {
+    
+    this.toolsSetup = toolsSetup;
+    return this;
+  }
+
+   /**
+   * Get toolsSetup
+   * @return toolsSetup
+  **/
+  @jakarta.annotation.Nullable
+  public V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup getToolsSetup() {
+    return toolsSetup;
+  }
+
+
+  public void setToolsSetup(V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup toolsSetup) {
+    this.toolsSetup = toolsSetup;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -125,21 +227,29 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
       return false;
     }
     V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger = (V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger) o;
-    return Objects.equals(this.command, v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.command) &&
-        Objects.equals(this.sync, v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.sync);
+    return Objects.equals(this.batchParamsFormatterTemplate, v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.batchParamsFormatterTemplate) &&
+        Objects.equals(this.batchReload, v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.batchReload) &&
+        Objects.equals(this.command, v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.command) &&
+        Objects.equals(this.scriptConfig, v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.scriptConfig) &&
+        Objects.equals(this.sync, v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.sync) &&
+        Objects.equals(this.toolsSetup, v1alpha1ConfigConstraintSpecReloadOptionsShellTrigger.toolsSetup);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(command, sync);
+    return Objects.hash(batchParamsFormatterTemplate, batchReload, command, scriptConfig, sync, toolsSetup);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {\n");
+    sb.append("    batchParamsFormatterTemplate: ").append(toIndentedString(batchParamsFormatterTemplate)).append("\n");
+    sb.append("    batchReload: ").append(toIndentedString(batchReload)).append("\n");
     sb.append("    command: ").append(toIndentedString(command)).append("\n");
+    sb.append("    scriptConfig: ").append(toIndentedString(scriptConfig)).append("\n");
     sb.append("    sync: ").append(toIndentedString(sync)).append("\n");
+    sb.append("    toolsSetup: ").append(toIndentedString(toolsSetup)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -162,8 +272,12 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("batchParamsFormatterTemplate");
+    openapiFields.add("batchReload");
     openapiFields.add("command");
+    openapiFields.add("scriptConfig");
     openapiFields.add("sync");
+    openapiFields.add("toolsSetup");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -197,11 +311,22 @@ public class V1alpha1ConfigConstraintSpecReloadOptionsShellTrigger {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("batchParamsFormatterTemplate") != null && !jsonObj.get("batchParamsFormatterTemplate").isJsonNull()) && !jsonObj.get("batchParamsFormatterTemplate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `batchParamsFormatterTemplate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("batchParamsFormatterTemplate").toString()));
+      }
       // ensure the required json array is present
       if (jsonObj.get("command") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("command").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `command` to be an array in the JSON string but got `%s`", jsonObj.get("command").toString()));
+      }
+      // validate the optional field `scriptConfig`
+      if (jsonObj.get("scriptConfig") != null && !jsonObj.get("scriptConfig").isJsonNull()) {
+        V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerScriptConfig.validateJsonObject(jsonObj.getAsJsonObject("scriptConfig"));
+      }
+      // validate the optional field `toolsSetup`
+      if (jsonObj.get("toolsSetup") != null && !jsonObj.get("toolsSetup").isJsonNull()) {
+        V1alpha1ConfigConstraintSpecReloadOptionsShellTriggerToolsSetup.validateJsonObject(jsonObj.getAsJsonObject("toolsSetup"));
       }
   }
 

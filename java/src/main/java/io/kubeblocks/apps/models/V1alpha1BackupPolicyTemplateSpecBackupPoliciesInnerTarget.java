@@ -49,9 +49,9 @@ import java.util.Set;
 import io.kubernetes.client.openapi.JSON;
 
 /**
- * The instance to be backed up.
+ * Defines the selection criteria of instance to be backed up, and the connection credential to be used during the backup process.
  */
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-13T14:34:07.299798Z[Etc/UTC]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-08T07:33:32.812607Z[Etc/UTC]")
 public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerTarget {
   public static final String SERIALIZED_NAME_ACCOUNT = "account";
   @SerializedName(SERIALIZED_NAME_ACCOUNT)
@@ -126,7 +126,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerTarget {
   }
 
    /**
-   * Refers to spec.componentDef.systemAccounts.accounts[*].name in the ClusterDefinition. The secret created by this account will be used to connect to the database. If not set, the secret created by spec.ConnectionCredential of the ClusterDefinition will be used.   It will be transformed into a secret for the BackupPolicy&#39;s target secret.
+   * If &#x60;backupPolicy.componentDefs&#x60; is set, this field is required to specify the system account name. This account must match one listed in &#x60;componentDefinition.spec.systemAccounts[*].name&#x60;. The corresponding secret created by this account is used to connect to the database.   If &#x60;backupPolicy.componentDefRef&#x60; (a legacy and deprecated API) is set, the secret defined in &#x60;clusterDefinition.spec.ConnectionCredential&#x60; is used instead.
    * @return account
   **/
   @jakarta.annotation.Nullable
@@ -168,7 +168,7 @@ public class V1alpha1BackupPolicyTemplateSpecBackupPoliciesInnerTarget {
   }
 
    /**
-   * Specifies the instance of the corresponding role for backup. The roles can be:   - Leader, Follower, or Leaner for the Consensus component. - Primary or Secondary for the Replication component.   Invalid roles of the component will be ignored. For example, if the workload type is Replication and the component&#39;s replicas is 1, the secondary role is invalid. It will also be ignored when the component is Stateful or Stateless.   The role will be transformed into a role LabelSelector for the BackupPolicy&#39;s target attribute.
+   * Specifies the role to select one or more replicas for backup.   - If no replica with the specified role exists, the backup task will fail. Special case: If there is only one replica in the cluster, it will be used for backup, even if its role differs from the specified one. For example, if you specify backing up on a secondary replica, but the cluster is single-node with only one primary replica, the primary will be used for backup. Future versions will address this special case using role priorities. - If multiple replicas satisfy the specified role, the choice (&#x60;Any&#x60; or &#x60;All&#x60;) will be made according to the &#x60;strategy&#x60; field below.
    * @return role
   **/
   @jakarta.annotation.Nonnull
