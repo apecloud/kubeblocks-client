@@ -37,7 +37,7 @@ for api_group in "${api_groups[@]}"; do
 			-v "$(pwd)":"$(pwd)" \
 			-ti \
 			--network host \
-			ghcr.io/kubernetes-client/java/crd-model-gen:v1.0.6 \
+			apecloud/crd-model-gen:v1.0.7 \
 			/generate.sh \
 			-u "${crd}" \
 			-n io.kubeblocks."${api_group}" \
