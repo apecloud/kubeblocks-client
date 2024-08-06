@@ -2,14 +2,14 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.12.1
-  creationTimestamp: "2024-07-08T07:28:49Z"
+    controller-gen.kubebuilder.io/version: v0.14.0
+  creationTimestamp: "2024-08-05T13:22:16Z"
   generation: 1
   labels:
     app.kubernetes.io/name: kubeblocks
   name: servicedescriptors.apps.kubeblocks.io
-  resourceVersion: "116557"
-  uid: d82fa006-3676-44a1-83c0-d42db5615e6f
+  resourceVersion: "905378"
+  uid: 4bdc33d7-bff9-495c-93dc-fe191d434cd3
 spec:
   conversion:
     strategy: None
@@ -45,13 +45,26 @@ spec:
       name: v1alpha1
       schema:
         openAPIV3Schema:
-          description: ServiceDescriptor describes a service provided by external sources. It contains the necessary details such as the service's address and connection credentials. To enable a Cluster to access this service, the ServiceDescriptor's name should be specified in the Cluster configuration under `clusterComponent.serviceRefs[*].serviceDescriptor`.
+          description: |-
+            ServiceDescriptor describes a service provided by external sources.
+            It contains the necessary details such as the service's address and connection credentials.
+            To enable a Cluster to access this service, the ServiceDescriptor's name should be specified
+            in the Cluster configuration under `clusterComponent.serviceRefs[*].serviceDescriptor`.
           properties:
             apiVersion:
-              description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+              description: |-
+                APIVersion defines the versioned schema of this representation of an object.
+                Servers should convert recognized schemas to the latest internal value, and
+                may reject unrecognized values.
+                More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
               type: string
             kind:
-              description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+              description: |-
+                Kind is a string value representing the REST resource this object represents.
+                Servers may infer this from the endpoint the client submits requests to.
+                Cannot be updated.
+                In CamelCase.
+                More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
               type: string
             metadata:
               type: object
@@ -65,7 +78,26 @@ spec:
                       description: Specifies the password for the external service.
                       properties:
                         value:
-                          description: "Holds a direct string or an expression that can be evaluated to a string. \n It can include variables denoted by $(VAR_NAME). These variables are expanded to the value of the environment variables defined in the container. If a variable cannot be resolved, it remains unchanged in the output. \n To escape variable expansion and retain the literal value, use double $ characters. \n For example: \n - \"$(VAR_NAME)\" will be expanded to the value of the environment variable VAR_NAME. - \"$$(VAR_NAME)\" will result in \"$(VAR_NAME)\" in the output, without any variable expansion. \n Default value is an empty string."
+                          description: |-
+                            Holds a direct string or an expression that can be evaluated to a string.
+
+
+                            It can include variables denoted by $(VAR_NAME).
+                            These variables are expanded to the value of the environment variables defined in the container.
+                            If a variable cannot be resolved, it remains unchanged in the output.
+
+
+                            To escape variable expansion and retain the literal value, use double $ characters.
+
+
+                            For example:
+
+
+                            - "$(VAR_NAME)" will be expanded to the value of the environment variable VAR_NAME.
+                            - "$$(VAR_NAME)" will result in "$(VAR_NAME)" in the output, without any variable expansion.
+
+
+                            Default value is an empty string.
                           type: string
                         valueFrom:
                           description: Specifies the source for the variable's value.
@@ -77,7 +109,10 @@ spec:
                                   description: The key to select.
                                   type: string
                                 name:
-                                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                                  description: |-
+                                    Name of the referent.
+                                    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                    TODO: Add other useful fields. apiVersion, kind, uid?
                                   type: string
                                 optional:
                                   description: Specify whether the ConfigMap or its key must be defined
@@ -87,7 +122,9 @@ spec:
                               type: object
                               x-kubernetes-map-type: atomic
                             fieldRef:
-                              description: 'Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels[''<KEY>'']`, `metadata.annotations[''<KEY>'']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.'
+                              description: |-
+                                Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
+                                spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
                               properties:
                                 apiVersion:
                                   description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -100,7 +137,9 @@ spec:
                               type: object
                               x-kubernetes-map-type: atomic
                             resourceFieldRef:
-                              description: 'Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.'
+                              description: |-
+                                Selects a resource of the container: only resources limits and requests
+                                (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
                               properties:
                                 containerName:
                                   description: 'Container name: required for volumes, optional for env vars'
@@ -126,7 +165,10 @@ spec:
                                   description: The key of the secret to select from.  Must be a valid secret key.
                                   type: string
                                 name:
-                                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                                  description: |-
+                                    Name of the referent.
+                                    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                    TODO: Add other useful fields. apiVersion, kind, uid?
                                   type: string
                                 optional:
                                   description: Specify whether the Secret or its key must be defined
@@ -141,7 +183,26 @@ spec:
                       description: Specifies the username for the external service.
                       properties:
                         value:
-                          description: "Holds a direct string or an expression that can be evaluated to a string. \n It can include variables denoted by $(VAR_NAME). These variables are expanded to the value of the environment variables defined in the container. If a variable cannot be resolved, it remains unchanged in the output. \n To escape variable expansion and retain the literal value, use double $ characters. \n For example: \n - \"$(VAR_NAME)\" will be expanded to the value of the environment variable VAR_NAME. - \"$$(VAR_NAME)\" will result in \"$(VAR_NAME)\" in the output, without any variable expansion. \n Default value is an empty string."
+                          description: |-
+                            Holds a direct string or an expression that can be evaluated to a string.
+
+
+                            It can include variables denoted by $(VAR_NAME).
+                            These variables are expanded to the value of the environment variables defined in the container.
+                            If a variable cannot be resolved, it remains unchanged in the output.
+
+
+                            To escape variable expansion and retain the literal value, use double $ characters.
+
+
+                            For example:
+
+
+                            - "$(VAR_NAME)" will be expanded to the value of the environment variable VAR_NAME.
+                            - "$$(VAR_NAME)" will result in "$(VAR_NAME)" in the output, without any variable expansion.
+
+
+                            Default value is an empty string.
                           type: string
                         valueFrom:
                           description: Specifies the source for the variable's value.
@@ -153,7 +214,10 @@ spec:
                                   description: The key to select.
                                   type: string
                                 name:
-                                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                                  description: |-
+                                    Name of the referent.
+                                    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                    TODO: Add other useful fields. apiVersion, kind, uid?
                                   type: string
                                 optional:
                                   description: Specify whether the ConfigMap or its key must be defined
@@ -163,7 +227,9 @@ spec:
                               type: object
                               x-kubernetes-map-type: atomic
                             fieldRef:
-                              description: 'Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels[''<KEY>'']`, `metadata.annotations[''<KEY>'']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.'
+                              description: |-
+                                Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
+                                spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
                               properties:
                                 apiVersion:
                                   description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -176,7 +242,9 @@ spec:
                               type: object
                               x-kubernetes-map-type: atomic
                             resourceFieldRef:
-                              description: 'Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.'
+                              description: |-
+                                Selects a resource of the container: only resources limits and requests
+                                (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
                               properties:
                                 containerName:
                                   description: 'Container name: required for volumes, optional for env vars'
@@ -202,7 +270,10 @@ spec:
                                   description: The key of the secret to select from.  Must be a valid secret key.
                                   type: string
                                 name:
-                                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                                  description: |-
+                                    Name of the referent.
+                                    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                    TODO: Add other useful fields. apiVersion, kind, uid?
                                   type: string
                                 optional:
                                   description: Specify whether the Secret or its key must be defined
@@ -215,10 +286,33 @@ spec:
                       type: object
                   type: object
                 endpoint:
-                  description: "Specifies the endpoint of the external service. \n If the service is exposed via a cluster, the endpoint will be provided in the format of <host>:<port>."
+                  description: |-
+                    Specifies the endpoint of the external service.
+
+
+                    If the service is exposed via a cluster, the endpoint will be provided in the format of `host:port`.
                   properties:
                     value:
-                      description: "Holds a direct string or an expression that can be evaluated to a string. \n It can include variables denoted by $(VAR_NAME). These variables are expanded to the value of the environment variables defined in the container. If a variable cannot be resolved, it remains unchanged in the output. \n To escape variable expansion and retain the literal value, use double $ characters. \n For example: \n - \"$(VAR_NAME)\" will be expanded to the value of the environment variable VAR_NAME. - \"$$(VAR_NAME)\" will result in \"$(VAR_NAME)\" in the output, without any variable expansion. \n Default value is an empty string."
+                      description: |-
+                        Holds a direct string or an expression that can be evaluated to a string.
+
+
+                        It can include variables denoted by $(VAR_NAME).
+                        These variables are expanded to the value of the environment variables defined in the container.
+                        If a variable cannot be resolved, it remains unchanged in the output.
+
+
+                        To escape variable expansion and retain the literal value, use double $ characters.
+
+
+                        For example:
+
+
+                        - "$(VAR_NAME)" will be expanded to the value of the environment variable VAR_NAME.
+                        - "$$(VAR_NAME)" will result in "$(VAR_NAME)" in the output, without any variable expansion.
+
+
+                        Default value is an empty string.
                       type: string
                     valueFrom:
                       description: Specifies the source for the variable's value.
@@ -230,7 +324,10 @@ spec:
                               description: The key to select.
                               type: string
                             name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                              description: |-
+                                Name of the referent.
+                                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?
                               type: string
                             optional:
                               description: Specify whether the ConfigMap or its key must be defined
@@ -240,7 +337,9 @@ spec:
                           type: object
                           x-kubernetes-map-type: atomic
                         fieldRef:
-                          description: 'Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels[''<KEY>'']`, `metadata.annotations[''<KEY>'']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.'
+                          description: |-
+                            Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
+                            spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
                           properties:
                             apiVersion:
                               description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -253,7 +352,9 @@ spec:
                           type: object
                           x-kubernetes-map-type: atomic
                         resourceFieldRef:
-                          description: 'Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.'
+                          description: |-
+                            Selects a resource of the container: only resources limits and requests
+                            (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
                           properties:
                             containerName:
                               description: 'Container name: required for volumes, optional for env vars'
@@ -279,7 +380,10 @@ spec:
                               description: The key of the secret to select from.  Must be a valid secret key.
                               type: string
                             name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                              description: |-
+                                Name of the referent.
+                                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?
                               type: string
                             optional:
                               description: Specify whether the Secret or its key must be defined
@@ -294,7 +398,26 @@ spec:
                   description: Specifies the service or IP address of the external service.
                   properties:
                     value:
-                      description: "Holds a direct string or an expression that can be evaluated to a string. \n It can include variables denoted by $(VAR_NAME). These variables are expanded to the value of the environment variables defined in the container. If a variable cannot be resolved, it remains unchanged in the output. \n To escape variable expansion and retain the literal value, use double $ characters. \n For example: \n - \"$(VAR_NAME)\" will be expanded to the value of the environment variable VAR_NAME. - \"$$(VAR_NAME)\" will result in \"$(VAR_NAME)\" in the output, without any variable expansion. \n Default value is an empty string."
+                      description: |-
+                        Holds a direct string or an expression that can be evaluated to a string.
+
+
+                        It can include variables denoted by $(VAR_NAME).
+                        These variables are expanded to the value of the environment variables defined in the container.
+                        If a variable cannot be resolved, it remains unchanged in the output.
+
+
+                        To escape variable expansion and retain the literal value, use double $ characters.
+
+
+                        For example:
+
+
+                        - "$(VAR_NAME)" will be expanded to the value of the environment variable VAR_NAME.
+                        - "$$(VAR_NAME)" will result in "$(VAR_NAME)" in the output, without any variable expansion.
+
+
+                        Default value is an empty string.
                       type: string
                     valueFrom:
                       description: Specifies the source for the variable's value.
@@ -306,7 +429,10 @@ spec:
                               description: The key to select.
                               type: string
                             name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                              description: |-
+                                Name of the referent.
+                                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?
                               type: string
                             optional:
                               description: Specify whether the ConfigMap or its key must be defined
@@ -316,7 +442,9 @@ spec:
                           type: object
                           x-kubernetes-map-type: atomic
                         fieldRef:
-                          description: 'Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels[''<KEY>'']`, `metadata.annotations[''<KEY>'']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.'
+                          description: |-
+                            Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
+                            spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
                           properties:
                             apiVersion:
                               description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -329,7 +457,9 @@ spec:
                           type: object
                           x-kubernetes-map-type: atomic
                         resourceFieldRef:
-                          description: 'Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.'
+                          description: |-
+                            Selects a resource of the container: only resources limits and requests
+                            (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
                           properties:
                             containerName:
                               description: 'Container name: required for volumes, optional for env vars'
@@ -355,7 +485,10 @@ spec:
                               description: The key of the secret to select from.  Must be a valid secret key.
                               type: string
                             name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                              description: |-
+                                Name of the referent.
+                                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?
                               type: string
                             optional:
                               description: Specify whether the Secret or its key must be defined
@@ -370,7 +503,26 @@ spec:
                   description: Specifies the port of the external service.
                   properties:
                     value:
-                      description: "Holds a direct string or an expression that can be evaluated to a string. \n It can include variables denoted by $(VAR_NAME). These variables are expanded to the value of the environment variables defined in the container. If a variable cannot be resolved, it remains unchanged in the output. \n To escape variable expansion and retain the literal value, use double $ characters. \n For example: \n - \"$(VAR_NAME)\" will be expanded to the value of the environment variable VAR_NAME. - \"$$(VAR_NAME)\" will result in \"$(VAR_NAME)\" in the output, without any variable expansion. \n Default value is an empty string."
+                      description: |-
+                        Holds a direct string or an expression that can be evaluated to a string.
+
+
+                        It can include variables denoted by $(VAR_NAME).
+                        These variables are expanded to the value of the environment variables defined in the container.
+                        If a variable cannot be resolved, it remains unchanged in the output.
+
+
+                        To escape variable expansion and retain the literal value, use double $ characters.
+
+
+                        For example:
+
+
+                        - "$(VAR_NAME)" will be expanded to the value of the environment variable VAR_NAME.
+                        - "$$(VAR_NAME)" will result in "$(VAR_NAME)" in the output, without any variable expansion.
+
+
+                        Default value is an empty string.
                       type: string
                     valueFrom:
                       description: Specifies the source for the variable's value.
@@ -382,7 +534,10 @@ spec:
                               description: The key to select.
                               type: string
                             name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                              description: |-
+                                Name of the referent.
+                                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?
                               type: string
                             optional:
                               description: Specify whether the ConfigMap or its key must be defined
@@ -392,7 +547,9 @@ spec:
                           type: object
                           x-kubernetes-map-type: atomic
                         fieldRef:
-                          description: 'Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels[''<KEY>'']`, `metadata.annotations[''<KEY>'']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.'
+                          description: |-
+                            Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
+                            spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
                           properties:
                             apiVersion:
                               description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -405,7 +562,9 @@ spec:
                           type: object
                           x-kubernetes-map-type: atomic
                         resourceFieldRef:
-                          description: 'Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.'
+                          description: |-
+                            Selects a resource of the container: only resources limits and requests
+                            (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
                           properties:
                             containerName:
                               description: 'Container name: required for volumes, optional for env vars'
@@ -431,7 +590,10 @@ spec:
                               description: The key of the secret to select from.  Must be a valid secret key.
                               type: string
                             name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?'
+                              description: |-
+                                Name of the referent.
+                                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?
                               type: string
                             optional:
                               description: Specify whether the Secret or its key must be defined
@@ -443,10 +605,28 @@ spec:
                       type: object
                   type: object
                 serviceKind:
-                  description: "Describes the type of database service provided by the external service. For example, \"mysql\", \"redis\", \"mongodb\". This field categorizes databases by their functionality, protocol and compatibility, facilitating appropriate service integration based on their unique capabilities. \n This field is case-insensitive. \n It also supports abbreviations for some well-known databases: - \"pg\", \"pgsql\", \"postgres\", \"postgresql\": PostgreSQL service - \"zk\", \"zookeeper\": ZooKeeper service - \"es\", \"elasticsearch\": Elasticsearch service - \"mongo\", \"mongodb\": MongoDB service - \"ch\", \"clickhouse\": ClickHouse service"
+                  description: |-
+                    Describes the type of database service provided by the external service.
+                    For example, "mysql", "redis", "mongodb".
+                    This field categorizes databases by their functionality, protocol and compatibility, facilitating appropriate
+                    service integration based on their unique capabilities.
+
+
+                    This field is case-insensitive.
+
+
+                    It also supports abbreviations for some well-known databases:
+                    - "pg", "pgsql", "postgres", "postgresql": PostgreSQL service
+                    - "zk", "zookeeper": ZooKeeper service
+                    - "es", "elasticsearch": Elasticsearch service
+                    - "mongo", "mongodb": MongoDB service
+                    - "ch", "clickhouse": ClickHouse service
                   type: string
                 serviceVersion:
-                  description: Describes the version of the service provided by the external service. This is crucial for ensuring compatibility between different components of the system, as different versions of a service may have varying features.
+                  description: |-
+                    Describes the version of the service provided by the external service.
+                    This is crucial for ensuring compatibility between different components of the system,
+                    as different versions of a service may have varying features.
                   type: string
               required:
                 - serviceKind
@@ -486,12 +666,12 @@ status:
       - sd
     singular: servicedescriptor
   conditions:
-    - lastTransitionTime: "2024-07-08T07:28:49Z"
+    - lastTransitionTime: "2024-08-05T13:22:16Z"
       message: no conflicts found
       reason: NoConflicts
       status: "True"
       type: NamesAccepted
-    - lastTransitionTime: "2024-07-08T07:28:49Z"
+    - lastTransitionTime: "2024-08-05T13:22:16Z"
       message: the initial names have been accepted
       reason: InitialNamesAccepted
       status: "True"
